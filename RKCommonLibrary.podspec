@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "RKCommonLibrary"
-  s.version      = "0.0.2"
+  s.version      = "0.0.1"
   s.summary      = "Common Library for iOS Project."
 
   s.homepage     = "https://github.com/DaskiOFF/RKCommonLibrary"
