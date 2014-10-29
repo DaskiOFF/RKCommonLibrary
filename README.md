@@ -3,6 +3,9 @@ RKCommonLibrary
 
 Common Library for iOS Project
 
+include
+===========
+pod 'RKCommonLibrary'
 
 RKCL.h
 ===========
