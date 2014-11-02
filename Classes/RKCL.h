@@ -11,11 +11,7 @@
 #ifndef __RKCL__
     #define __RKCL__
 
-	#import "RKDefines.h"
-
 #endif /* __RKCL__ */
-
-#import <Foundation/Foundation.h>
 
 /**
  * Возвращает корневой View Controller
