@@ -80,7 +80,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Classes", "Classes/*.{h,m}"
+  s.source_files  = "Classes/*.{h,m}"
   #s.exclude_files = "Classes/Exclude"
 
   s.public_header_files = "Classes/RKCL.h"
@@ -126,7 +126,7 @@ Pod::Spec.new do |s|
 
   # ――― Subspec ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.subspec 'UIView' do |ss|
-    ss.source_files  = "Classes", "Classes/UIView+RKUIViewCategory.{h,m}"
+    ss.source_files  = "Classes/UIView+RKUIViewCategory.{h,m}"
     s.public_header_files = "Classes/UIView+RKUIViewCategory.h"
     ss.framework  = "Foundation"
   end
