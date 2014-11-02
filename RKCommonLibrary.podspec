@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "RKCommonLibrary"
-  s.version      = "0.1.2"
+  s.version      = "0.1.3"
   s.summary      = "Common Library for iOS Project."
 
   s.homepage     = "https://github.com/DaskiOFF/RKCommonLibrary"
@@ -123,5 +123,12 @@ Pod::Spec.new do |s|
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # s.dependency "JSONKit", "~> 1.4"
+
+  # ――― Subspec ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
+  s.subspec 'UIView' do |ss|
+    ss.source_files  = "Classes", "Classes/UIView+RKUIViewCategory.{h,m}"
+    s.public_header_files = "Classes/UIView+RKUIViewCategory.h"
+    ss.framework  = "Foundation"
+  end
 
 end

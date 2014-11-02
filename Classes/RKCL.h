@@ -11,6 +11,8 @@
 #ifndef __RKCL__
     #define __RKCL__
 
+	#import "UIView+RKUIViewCategory.h"
+
 #endif /* __RKCL__ */
 
 /**
