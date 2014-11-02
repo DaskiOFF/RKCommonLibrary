@@ -26,6 +26,18 @@ RKCL.h
 * DOLog - Вывести в лог с форматом, если режим отладки, иначе ничего не делать
 * DODiscLog - Вывести в лог @"%@", если режим отладки, иначе ничего не делать
 
+UIView+RKUIViewCategory.h
+==============
+- @property stringExtra -- Тэг view (свойство добавляемое в runtime)
+
+- (void)autoHeight -- Изменение высоты view в зависимости от размеров содержащихся subview
+
+- (void)shakeView -- Встряска из стороны в сторону
+
+- (void)printSubviewsWithIndentation:(int)indentation -- Получаем текстовую иерархию view в NSLog
+
+- (UIView *)viewWithStringExtra:(NSString *)tag -- Найти subview с указанным тегом
+
 LICENSE
 ==============
 The MIT License (MIT)
