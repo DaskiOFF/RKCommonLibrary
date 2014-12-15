@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "RKCommonLibrary"
-  s.version      = "0.1.5"
+  s.version      = "0.1.6"
   s.summary      = "Common Library for iOS Project."
 
   s.homepage     = "https://github.com/DaskiOFF/RKCommonLibrary"
@@ -80,7 +80,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Classes/*.{h,m}"
+  s.source_files  = "Classes/RKCL.h"
   #s.exclude_files = "Classes/Exclude"
 
   s.public_header_files = "Classes/*.h"
