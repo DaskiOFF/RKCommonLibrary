@@ -43,23 +43,28 @@ RKCL.h
 
 UIView+RKUIViewCategory.h
 ==============
-- @property stringExtra - Тэг view (свойство добавляемое в runtime)
-
-- (void)autoHeight - Изменение высоты view в зависимости от размеров содержащихся subview
-
-- (void)shakeView - Встряска из стороны в сторону
-
-- (void)printSubviewsWithIndentation: - Получаем текстовую иерархию view в NSLog
-
-- (UIView *)viewWithStringExtra: - Найти subview с указанным тегом
+* @property stringExtra - Тэг view (свойство добавляемое в runtime)
+* - (void)autoHeight - Изменение высоты view в зависимости от размеров содержащихся subview
+* - (void)shakeView - Встряска из стороны в сторону
+* - (void)printSubviewsWithIndentation: - Получаем текстовую иерархию view в NSLog
+* - (UIView *)viewWithStringExtra: - Найти subview с указанным тегом
 
 NSString+RKNSStringCategory.h
 ==============
-- (BOOL)isEmpty - Возвращает YES, если строка явялется пустой, иначе NO
+* - (BOOL)isEmpty - Возвращает YES, если строка явялется пустой, иначе NO
+* - (NSString *)md5String - Возвращает MD5 строки
+* + (NSString *)md5String: - Возвращает MD5 строки
 
-- (NSString *)md5String - Возвращает MD5 строки
-
-+ (NSString *)md5String: - Возвращает MD5 строки
+NSDate+RKNSDateCategory.h
+==============
+* + (NSString*)nowStringWithFormat:(NSString*)format - Текущая дата в пользовательсом формате
+* + (NSString*)nowString - Текущая дата в формате yyyy-MM-dd hh:mm:ss
+* + (NSString*)nowStringDate - Текущая дата в формате yyyy-MM-dd
+* + (NSString*)nowStringTime - Текущее время в формате hh:mm:ss
+* - (NSString*)stringWithFormat:(NSString*)format - Дата в пользовательсом формате
+* - (NSString*)string - Дата в формате yyyy-MM-dd hh:mm:ss
+* - (NSString*)stringDate - Дата в формате yyyy-MM-dd
+* - (NSString*)stringTime - Время в формате hh:mm:ss
 
 LICENSE
 ==============
