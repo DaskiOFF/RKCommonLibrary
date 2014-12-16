@@ -31,6 +31,9 @@ RKCL.h
 * ClearColor - Получить прозрачный цвет
 * DOLog - Вывести в лог с форматом, если режим отладки, иначе ничего не делать
 * DODiscLog - Вывести в лог @"%@", если режим отладки, иначе ничего не делать
+* + (void)safeWithBlock:catchBlock:finalyBlock: - Метод для безопасного выполнения кода
+* + (void)safeWithBlock:catchBlock: - Метод для безопасного выполнения кода
+* + (void)safeWithBlock: - Метод для безопасного выполнения кода
 
 UIView+RKUIViewCategory.h
 ==============
