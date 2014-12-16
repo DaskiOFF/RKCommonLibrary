@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Roman Kotov. All rights reserved.
 //
 
+#import "RKCL.h"
+
 @implementation RKCL : NSObject
 
 + (void)safeWithBlock:(void (^)())block catchBlock:(void (^)(NSException *exception))catchBlock finalyBlock:(void (^)())finalyBlock {
