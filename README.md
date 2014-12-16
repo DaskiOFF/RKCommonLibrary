@@ -3,6 +3,10 @@ RKCommonLibrary
 
 Common Library for iOS Project
 
+Contacts: 
+waydeveloper@gmail.com
+vk.com/daskioff
+
 include
 ===========
 pod 'RKCommonLibrary'
@@ -37,23 +41,23 @@ RKCL.h
 
 UIView+RKUIViewCategory.h
 ==============
-- @property stringExtra -- Тэг view (свойство добавляемое в runtime)
+- @property stringExtra - Тэг view (свойство добавляемое в runtime)
 
-- (void)autoHeight -- Изменение высоты view в зависимости от размеров содержащихся subview
+- (void)autoHeight - Изменение высоты view в зависимости от размеров содержащихся subview
 
-- (void)shakeView -- Встряска из стороны в сторону
+- (void)shakeView - Встряска из стороны в сторону
 
-- (void)printSubviewsWithIndentation:(int)indentation -- Получаем текстовую иерархию view в NSLog
+- (void)printSubviewsWithIndentation: - Получаем текстовую иерархию view в NSLog
 
-- (UIView *)viewWithStringExtra:(NSString *)tag -- Найти subview с указанным тегом
+- (UIView *)viewWithStringExtra: - Найти subview с указанным тегом
 
 NSString+RKNSStringCategory.h
 ==============
-- (BOOL)isEmpty -- Возвращает YES, если строка явялется пустой, иначе NO
+- (BOOL)isEmpty - Возвращает YES, если строка явялется пустой, иначе NO
 
-- (NSString *)md5String -- Возвращает MD5 строки
+- (NSString *)md5String - Возвращает MD5 строки
 
-+ (NSString *)md5String:(NSString *)string -- Возвращает MD5 строки
++ (NSString *)md5String: - Возвращает MD5 строки
 
 LICENSE
 ==============
