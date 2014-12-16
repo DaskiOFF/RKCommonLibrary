@@ -157,3 +157,31 @@
     #define DOLog(format, ...)
     #define DODiscLog(...)
 #endif
+
+@interface RKCL : NSObject
+
+/**
+ * Метод для безопасного выполнения кода
+ *
+ * @param block 		Блок для безопасного выполнения
+ * @param catchBlock 	Блок для обработки ошибки
+ * @param finalyBlock 	Блок для завершения выполнения
+ */
++(void)safeWithBlock:(void (^)())block catchBlock:(void (^)(NSException *exception))catchBlock finalyBlock:(void (^)())finalyBlock;
+
+/**
+ * Метод для безопасного выполнения кода
+ *
+ * @param block 		Блок для безопасного выполнения
+ * @param catchBlock 	Блок для обработки ошибки
+ */
++(void)safeWithBlock:(void (^)())block catchBlock:(void (^)(NSException *exception))catchBlock;
+
+/**
+ * Метод для безопасного выполнения кода
+ *
+ * @param block 		Блок для безопасного выполнения
+ */
++(void)safeWithBlock:(void (^)())block;
+
+@end
