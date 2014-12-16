@@ -7,7 +7,7 @@ Contacts
 ===============
 * waydeveloper@gmail.com
 * http://waydeveloper.com
-* vk.com/daskioff
+* http://vk.com/daskioff
 
 include
 ===========
