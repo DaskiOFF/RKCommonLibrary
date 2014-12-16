@@ -5,9 +5,9 @@ Common Library for iOS Project
 
 Contacts
 ===============
-waydeveloper@gmail.com
-
-vk.com/daskioff
+* waydeveloper@gmail.com
+* http://waydeveloper.com
+* vk.com/daskioff
 
 include
 ===========
