@@ -47,6 +47,13 @@
 #define screenSize [[UIScreen mainScreen] bounds].size
 
 /**
+ * Возвращает значение является ли данная модель iPad
+ *
+ * @return BOOL
+ */
+#define isIpad (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
+
+/**
  * Возвращает значение является ли данная модель телефона iPhone 4
  *
  * @return BOOL
@@ -73,6 +80,41 @@
  * @return BOOL
  */
 #define isIphone6Plus ((!(isIphone4 || isIphone5 || isIphone6) && screenSize.height <= 736) ? YES : NO)
+
+/**
+ * Возвращает значение равна ли данная версия ОС v
+ *
+ * @return BOOL
+ */
+#define SYSTEM_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+
+/**
+ * Возвращает значение данная версия ОС больше v или нет
+ *
+ * @return BOOL
+ */
+#define SYSTEM_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+
+/**
+ * Возвращает значение данная версия ОС больше или равна v или нет
+ *
+ * @return BOOL
+ */
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+
+/**
+ * Возвращает значение данная версия ОС меньше v или нет
+ *
+ * @return BOOL
+ */
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
+/**
+ * Возвращает значение данная версия ОС меньше или равна v или нет
+ *
+ * @return BOOL
+ */
+#define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
 /**
  * Возвращает рандомное число в заданном диапазоне
