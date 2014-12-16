@@ -47,6 +47,14 @@ UIView+RKUIViewCategory.h
 
 - (UIView *)viewWithStringExtra:(NSString *)tag -- Найти subview с указанным тегом
 
+NSString+RKNSStringCategory.h
+==============
+- (BOOL)isEmpty -- Возвращает YES, если строка явялется пустой, иначе NO
+
+- (NSString *)md5String -- Возвращает MD5 строки
+
++ (NSString *)md5String:(NSString *)string -- Возвращает MD5 строки
+
 LICENSE
 ==============
 The MIT License (MIT)

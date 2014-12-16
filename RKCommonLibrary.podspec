@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "RKCommonLibrary"
-  s.version      = "0.1.9"
+  s.version      = "0.1.10"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.summary      = "Common Library for iOS Project."
   s.homepage     = "https://github.com/DaskiOFF/RKCommonLibrary"
@@ -18,6 +18,12 @@ Pod::Spec.new do |s|
   s.subspec 'UIView' do |ss|
     ss.source_files  = "Classes/UIView+RKUIViewCategory.{h,m}"
     ss.public_header_files = "Classes/UIView+RKUIViewCategory.h"
+    ss.framework  = "Foundation"
+  end
+
+  s.subspec 'NSString' do |ss|
+    ss.source_files  = "Classes/NSString+RKNSStringCategory.{h,m}"
+    ss.public_header_files = "Classes/NSString+RKNSStringCategory.h"
     ss.framework  = "Foundation"
   end
 

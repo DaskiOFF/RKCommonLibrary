@@ -12,6 +12,7 @@
     #define __RKCL__
 
 	#import "UIView+RKUIViewCategory.h"
+	#import "NSString+RKNSStringCategory.h"
 
 #endif /* __RKCL__ */
 
