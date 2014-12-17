@@ -15,6 +15,7 @@ pod 'RKCommonLibrary'
 
 RKCL.h
 ===========
+* UDIDString - Возвращает UDID устройства в виде строки
 * rootVC - Возвращает корневой View Controller
 * userDefaults - Возвращает userDefaults
 * currentLocale - Возвращает текущую локаль

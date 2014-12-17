@@ -16,14 +16,13 @@
 
 #endif /* __RKCL__ */
 
-/**
- * Возвращает корневой View Controller
- */
+/** Возвращает UDID устройства в виде строки */
+#define UDIDString [[UIDevice currentDevice] identifierForVendor].UUIDString
+
+/** Возвращает корневой View Controller */
 #define rootVC ((NVSlideMenuController *)[[UIApplication sharedApplication] delegate].window.rootViewController)
 
-/**
- * Возвращает userDefaults
- */
+/** Возвращает userDefaults */
 #define userDefaults [NSUserDefaults standardUserDefaults]
 
 /**
@@ -117,14 +116,10 @@
  */
 #define SYSTEM_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
-/**
- * Возвращает рандомное число в заданном диапазоне
- */
+/** Возвращает рандомное число в заданном диапазоне */
 #define randFromTo(min, max) (min + arc4random_uniform(max - min + 1))
 
-/**
- * Какое смещение делать относительно высоты экрана (Проверка на версию телефона iPhone 4)
- */
+/** Какое смещение делать относительно высоты экрана (Проверка на версию телефона iPhone 4) */
 #define assetByScreenHeight(regular, longScreen) ((isIphone4) ? regular : longScreen)
 
 /**
@@ -148,9 +143,7 @@
  */
 #define ClearColor [UIColor clearColor]
 
-/**
- * Вывести в лог, если режим отладки, иначе ничего не делать
- */
+/** Вывести в лог, если режим отладки, иначе ничего не делать */
 #ifdef DEBUG
     #define DOLog(format, ...) NSLog(format, ## __VA_ARGS__)
     #define DODiscLog(...) NSLog(@"%@", ## __VA_ARGS__)
