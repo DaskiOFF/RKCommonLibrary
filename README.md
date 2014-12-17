@@ -72,6 +72,11 @@ NSDate+RKNSDateCategory.h
 * - (NSString*)stringDate - Дата в формате yyyy-MM-dd
 * - (NSString*)stringTime - Время в формате hh:mm:ss
 
+UIColor+RKUIColorCategory.h
+==============
+* + (UIColor*)colorWithHex:alpha: - Возвращает UIColor по hex значению и значению прозрачности
+* + (UIColor *)colorWithHex: - Возвращает UIColor по hex значению
+
 LICENSE
 ==============
 The MIT License (MIT)
