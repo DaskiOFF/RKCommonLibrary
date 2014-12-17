@@ -10,8 +10,7 @@
 
 @implementation UILabel (RKUILabelCategory)
 
-- (float)autoHeight
-{
+- (CGFloat)autoHeight {
     CGRect labelRect;
     
     if (self.attributedText) {
@@ -28,8 +27,7 @@
     
     return labelRect.size.height;
 }
-- (float)autoWidth
-{
+- (CGFloat)autoWidth {
     CGRect labelRect;
     
     if (self.attributedText) {
