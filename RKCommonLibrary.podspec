@@ -46,7 +46,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'UINavigationController' do |ss|
-    ss.source_files  = "Classes/UINavigationController+RKUINavigationControllerCategory.h.{h,m}"
+    ss.source_files  = "Classes/UINavigationController+RKUINavigationControllerCategory.{h,m}"
     ss.public_header_files = "Classes/UINavigationController+RKUINavigationControllerCategory.h"
     ss.framework  = "Foundation"
   end
