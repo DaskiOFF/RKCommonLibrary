@@ -7,7 +7,7 @@
 //
 
 #import "UIViewController+RKUIViewControllerCategory.h"
-#import <UIColor+RKUIColorCategory.h>
+#import <UIColor/UIColor+RKUIColorCategory.h>
 
 @implementation UIViewController (RKUIViewControllerCategory)
 
