@@ -132,14 +132,14 @@
  *
  * @return UIColor
  */
-#define RGB(r, g, b) [UIColor colorWithRed:(r/255) green:(g/255) blue:(b/255) alpha:1.0f]
+#define RGB(r, g, b) [UIColor colorWithRed:(r/255.0) green:(g/255.0) blue:(b/255.0) alpha:1.0f]
 
 /**
  * Получить цвет согласно RGB с заданной прозрачностью (alpha)
  *
  * @return UIColor
  */
-#define RGBA(r, g, b, a) [UIColor colorWithRed:(r/255) green:(g/255) blue:(b/255) alpha:(a)]
+#define RGBA(r, g, b, a) [UIColor colorWithRed:(r/255.0) green:(g/255.0) blue:(b/255.0) alpha:(a)]
 
 /**
  * Получить прозрачный цвет
