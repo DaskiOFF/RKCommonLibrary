@@ -161,7 +161,7 @@
  * @param catchBlock 	Блок для обработки ошибки
  * @param finalyBlock 	Блок для завершения выполнения
  */
-+(void)safeWithBlock:(void (^)())block catchBlock:(void (^)(NSException *exception))catchBlock finalyBlock:(void (^)())finalyBlock;
++ (void)safeWithBlock:(void (^)())block catchBlock:(void (^)(NSException *exception))catchBlock finalyBlock:(void (^)())finalyBlock;
 
 /**
  * Метод для безопасного выполнения кода
@@ -169,13 +169,22 @@
  * @param block 		Блок для безопасного выполнения
  * @param catchBlock 	Блок для обработки ошибки
  */
-+(void)safeWithBlock:(void (^)())block catchBlock:(void (^)(NSException *exception))catchBlock;
++ (void)safeWithBlock:(void (^)())block catchBlock:(void (^)(NSException *exception))catchBlock;
 
 /**
  * Метод для безопасного выполнения кода
  *
  * @param block 		Блок для безопасного выполнения
  */
-+(void)safeWithBlock:(void (^)())block;
++ (void)safeWithBlock:(void (^)())block;
+
+/**
+ *  Выполнение блока с указанной задержкой
+ *
+ *
+ *  @param block    Блок который необходимо выполнить
+ *  @param delay    Задержка, через которую блок начнет выполняться
+ */
++ (void)performBlock:(void (^)())block delay:(NSTimeInterval)delay;
 
 @end

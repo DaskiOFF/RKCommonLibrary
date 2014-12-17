@@ -41,6 +41,7 @@ RKCL.h
 * + (void)safeWithBlock:catchBlock:finalyBlock: - Метод для безопасного выполнения кода
 * + (void)safeWithBlock:catchBlock: - Метод для безопасного выполнения кода
 * + (void)safeWithBlock: - Метод для безопасного выполнения кода
+* + (void)performBlock:delay: - Выполнение блока с указанной задержкой
 
 UIView+RKUIViewCategory.h
 ==============
