@@ -52,7 +52,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'UILabel' do |ss|
-    ss.source_files  = "Classes/UILabel+RKUILabelCategory.h.{h,m}"
+    ss.source_files  = "Classes/UILabel+RKUILabelCategory.{h,m}"
     ss.public_header_files = "Classes/UILabel+RKUILabelCategory.h"
     ss.framework  = "Foundation"
   end
