@@ -55,7 +55,7 @@
 }
 
 + (UIColor *)colorWithHex:(NSString*)hexColorString {
-    return [self colorWithHex:hexColorString andAlpha:1];
+    return [self colorWithHex:hexColorString alpha:1];
 }
 
 @end
