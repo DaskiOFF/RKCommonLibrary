@@ -77,6 +77,10 @@ UIColor+RKUIColorCategory.h
 * + (UIColor*)colorWithHex:alpha: - Возвращает UIColor по hex значению и значению прозрачности
 * + (UIColor *)colorWithHex: - Возвращает UIColor по hex значению
 
+UIViewController+RKUIViewControllerCategory.h
+==============
+* - (UINavigationController*)toNavController - Создает Navigation controller и устанавливает в корневой View Controller текущий
+
 LICENSE
 ==============
 The MIT License (MIT)

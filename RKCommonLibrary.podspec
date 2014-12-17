@@ -39,4 +39,10 @@ Pod::Spec.new do |s|
     ss.framework  = "Foundation"
   end
 
+  s.subspec 'UIViewController' do |ss|
+    ss.source_files  = "Classes/UIViewController+RKUIViewControllerCategory.{h,m}"
+    ss.public_header_files = "Classes/UIViewController+RKUIViewControllerCategory.h"
+    ss.framework  = "Foundation"
+  end
+
 end
