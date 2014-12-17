@@ -13,6 +13,11 @@
 
 	#import "UIView+RKUIViewCategory.h"
 	#import "NSString+RKNSStringCategory.h"
+	#import "NSDate+RKNSDateCategory.h"
+	#import "UIColor+RKUIColorCategory.h"
+	#import "UILabel+RKUILabelCategory.h"
+	#import "UINavigationController+RKUINavigationControllerCategory.h"
+	#import "UIViewController+RKUIViewControllerCategory.h"
 
 #endif /* __RKCL__ */
 

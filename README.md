@@ -85,6 +85,11 @@ UINavigationController+RKUINavigationControllerCategory.h
 ==============
 * @property (nonatomic, strong) NSString* backButtonTitle - Текст кнопки "назад"
 
+UILabel+RKUILabelCategory.h
+==============
+* - (CGFloat)autoHeight - Изменить высоту в зависимости от текста
+* - (CGFloat)autoWidth - Изменить ширину в зависимости от текста
+
 LICENSE
 ==============
 The MIT License (MIT)
