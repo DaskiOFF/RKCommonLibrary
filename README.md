@@ -81,6 +81,10 @@ UIViewController+RKUIViewControllerCategory.h
 ==============
 * - (UINavigationController*)toNavController - Создает Navigation controller и устанавливает в корневой View Controller текущий
 
+UINavigationController+RKUINavigationControllerCategory.h
+==============
+* @property (nonatomic, strong) NSString* backButtonTitle - Текст кнопки "назад"
+
 LICENSE
 ==============
 The MIT License (MIT)
