@@ -46,6 +46,7 @@ RKCL Class
 * + (void)safeWithBlock: - Метод для безопасного выполнения кода
 * + (void)performBlock:delay: - Выполнение блока с указанной задержкой
 * + (void)clearCookies - Быстрая очистка cookies в NSHTTPCookieStorage
+* + (CGSize)frameForText:sizeWithFont:constrainedToSize: - Возвращает размер frame для размещения текста
 
 UIView+RKUIViewCategory.h
 ==============

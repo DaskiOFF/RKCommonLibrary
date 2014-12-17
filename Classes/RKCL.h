@@ -195,4 +195,14 @@
 /** Быстрая очистка cookies в NSHTTPCookieStorage */
 + (void)clearCookies;
 
+/** Возвращает размер frame для размещения текста
+ *
+ *
+ *  @param text    Текст
+ *  @param font    Шрифт
+ *  @param size    Пределы размера (максимальная ширина и высота)
+ *  @return размер frame для размещения текста
+ */
++ (CGSize)frameForText:(NSString*)text sizeWithFont:(UIFont*)font constrainedToSize:(CGSize)size;
+
 @end
