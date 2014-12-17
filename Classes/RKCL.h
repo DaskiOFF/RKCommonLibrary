@@ -187,4 +187,7 @@
  */
 + (void)performBlock:(void (^)())block delay:(NSTimeInterval)delay;
 
+/** Быстрая очистка cookies в NSHTTPCookieStorage */
++ (void)clearCookies;
+
 @end

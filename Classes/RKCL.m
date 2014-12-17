@@ -45,4 +45,13 @@
     });
 }
 
++ (void)clearCookies {
+    NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
+    for (NSHTTPCookie *cookie in cookies)
+    {
+        [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+    }
+    DOLog(@"Cookies очищены!");
+}
+
 @end
