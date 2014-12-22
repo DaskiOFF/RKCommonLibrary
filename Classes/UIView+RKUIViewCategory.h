@@ -13,6 +13,18 @@
 /** тэг view (свойство добавляемое в runtime) */
 @property (nonatomic, copy) NSString *stringExtra;
 
+/// Координата X
+@property (nonatomic, assign) CGFloat x;
+
+/// Координата Y
+@property (nonatomic, assign) CGFloat y;
+
+/// Ширина
+@property (nonatomic, assign) CGFloat width;
+
+/// Высота
+@property (nonatomic, assign) CGFloat height;
+
 /** Изменение высоты view в зависимости от размеров содержащихся subview */
 - (void)autoHeight;
 
@@ -35,5 +47,7 @@
  *  @return View с данным тегом
  */
 - (UIView *)viewWithStringExtra:(NSString *)tag;
+
+
 
 @end

@@ -51,6 +51,10 @@ RKCL Class
 UIView+RKUIViewCategory.h
 ==============
 * @property stringExtra - Тэг view (свойство добавляемое в runtime)
+* @property (nonatomic, assign) CGFloat x - Координата X
+* @property (nonatomic, assign) CGFloat y - Координата Y
+* @property (nonatomic, assign) CGFloat width - Ширина
+* @property (nonatomic, assign) CGFloat height - Высота
 * - (void)autoHeight - Изменение высоты view в зависимости от размеров содержащихся subview
 * - (void)shakeView - Встряска из стороны в сторону
 * - (void)printSubviewsWithIndentation: - Получаем текстовую иерархию view в NSLog
