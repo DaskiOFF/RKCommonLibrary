@@ -25,6 +25,12 @@
 /// Высота
 @property (nonatomic, assign) CGFloat height;
 
+/// Точка отсчета
+@property (nonatomic) CGPoint origin;
+
+/// Размеры
+@property (nonatomic) CGSize size;
+
 /** Изменение высоты view в зависимости от размеров содержащихся subview */
 - (void)autoHeight;
 

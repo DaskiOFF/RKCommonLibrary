@@ -161,4 +161,24 @@ static NSString *kStringExtraKey = @"StringTagKey";
     self.frame = frame;
 }
 
+- (CGPoint)origin {
+    return self.frame.origin;
+}
+
+- (void)setOrigin:(CGPoint)origin {
+    CGRect newFrame = self.frame;
+    newFrame.origin = origin;
+    self.frame = newFrame;
+}
+
+- (CGSize)size {
+    return self.frame.size;
+}
+
+- (void)setSize:(CGSize)size {
+    CGRect newFrame = self.frame;
+    newFrame.size = size;
+    self.frame = newFrame;
+}
+
 @end
