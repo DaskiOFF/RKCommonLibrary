@@ -55,8 +55,14 @@ UIView+RKUIViewCategory.h
 * @property (nonatomic, assign) CGFloat y - Координата Y
 * @property (nonatomic, assign) CGFloat width - Ширина
 * @property (nonatomic, assign) CGFloat height - Высота
-* @property (nonatomic) CGPoint origin - Точка отсчета
-* @property (nonatomic) CGSize size - Размеры
+* @property (nonatomic, assign) CGPoint origin - Точка отсчета
+* @property (nonatomic, assign) CGSize size - Размеры
+* @property (nonatomic, assign) CGFloat centerX - Координата X центра
+* @property (nonatomic, assign) CGFloat centerY - Координата Y центра
+* @property (nonatomic, assign) CGFloat top - Верхний край
+* @property (nonatomic, assign) CGFloat bottom - Нижний край
+* @property (nonatomic, assign) CGFloat left - Левый край
+* @property (nonatomic, assign) CGFloat right - Правый край
 * - (void)autoHeight - Изменение высоты view в зависимости от размеров содержащихся subview
 * - (void)shakeView - Встряска из стороны в сторону
 * - (void)printSubviewsWithIndentation: - Получаем текстовую иерархию view в NSLog

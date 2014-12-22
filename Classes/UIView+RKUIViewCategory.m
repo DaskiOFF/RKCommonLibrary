@@ -181,4 +181,60 @@ static NSString *kStringExtraKey = @"StringTagKey";
     self.frame = newFrame;
 }
 
+#pragma mark -
+#pragma mark Center
+- (CGFloat)centerX {
+    return self.center.x;
+}
+
+- (void)setCenterX:(CGFloat)centerX {
+    CGPoint center = self.center;
+    center.x = centerX;
+    self.center = center;
+}
+
+- (CGFloat)centerY {
+    return self.center.y;
+}
+
+- (void)setCenterY:(CGFloat)centerY {
+    CGPoint center = self.center;
+    center.y = centerY;
+    self.center = center;
+}
+
+#pragma mark -
+#pragma mark Border
+- (CGFloat)top {
+    return self.y;
+}
+
+- (void)setTop:(CGFloat)top {
+    self.y = top;
+}
+
+- (CGFloat)bottom {
+    return self.y + self.height;
+}
+
+- (void)setBottom:(CGFloat)bottom {
+    self.y = bottom - self.height;
+}
+
+- (CGFloat)left {
+    return self.x;
+}
+
+- (void)setLeft:(CGFloat)left {
+    self.x = left;
+}
+
+- (CGFloat)right {
+    return self.x + self.width;
+}
+
+- (void)setRight:(CGFloat)right {
+    self.x = right - self.width;
+}
+
 @end

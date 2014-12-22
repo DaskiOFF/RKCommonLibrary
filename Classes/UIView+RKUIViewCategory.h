@@ -31,6 +31,24 @@
 /// Размеры
 @property (nonatomic) CGSize size;
 
+/// Координата X центра
+@property (nonatomic, assign) CGFloat centerX;
+
+/// Координата Y центра
+@property (nonatomic, assign) CGFloat centerY;
+
+/// Верхний край
+@property (nonatomic, assign) CGFloat top;
+
+/// Нижний край
+@property (nonatomic, assign) CGFloat bottom;
+
+/// Левый край
+@property (nonatomic, assign) CGFloat left;
+
+/// Правый край
+@property (nonatomic, assign) CGFloat right
+
 /** Изменение высоты view в зависимости от размеров содержащихся subview */
 - (void)autoHeight;
 
