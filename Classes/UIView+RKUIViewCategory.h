@@ -47,7 +47,7 @@
 @property (nonatomic, assign) CGFloat left;
 
 /// Правый край
-@property (nonatomic, assign) CGFloat right
+@property (nonatomic, assign) CGFloat right;
 
 /** Изменение высоты view в зависимости от размеров содержащихся subview */
 - (void)autoHeight;
