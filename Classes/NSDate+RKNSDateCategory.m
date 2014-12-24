@@ -28,6 +28,10 @@
     return [self nowStringWithFormat:@"hh:mm:ss"];
 }
 
++ (NSTimeInterval)timeIntervalSince1970 {
+    return [NSDate date].timeIntervalSince1970;
+}
+
 - (NSString*)stringWithFormat:(NSString*)format {
     NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateFormat:format];

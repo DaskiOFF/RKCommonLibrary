@@ -28,6 +28,9 @@
 /** Текущее время в формате hh:mm:ss */
 + (NSString*)nowStringTime;
 
+/** Возвращает количество секунд с 1.1.1970 */
++ (NSTimeInterval)timeIntervalSince1970;
+
 /**
  *  Дата в пользовательсом формате
  *

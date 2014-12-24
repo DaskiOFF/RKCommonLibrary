@@ -80,6 +80,7 @@ NSDate+RKNSDateCategory.h
 * + (NSString*)nowString - Текущая дата в формате yyyy-MM-dd hh:mm:ss
 * + (NSString*)nowStringDate - Текущая дата в формате yyyy-MM-dd
 * + (NSString*)nowStringTime - Текущее время в формате hh:mm:ss
+* + (NSTimeInterval)timeIntervalSince1970 - Возвращает количество секунд с 1.1.1970
 * - (NSString*)stringWithFormat:(NSString*)format - Дата в пользовательсом формате
 * - (NSString*)string - Дата в формате yyyy-MM-dd hh:mm:ss
 * - (NSString*)stringDate - Дата в формате yyyy-MM-dd
