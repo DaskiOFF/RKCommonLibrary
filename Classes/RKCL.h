@@ -77,28 +77,28 @@
  *
  * @return BOOL
  */
-#define isIphone4 ((screenSize.height <= 480.0) ? YES : NO)
-
-/**
- * Возвращает значение является ли данная модель телефона iPhone 5
- *
- * @return BOOL
- */
-#define isIphone5 ((isIphone4 || isIphone6 || isIphone6Plus) ? NO : YES)
+#define isIphone4 ((SCREEN_WIDTH_LANDSCAPE <= 480.0) ? YES : NO)
 
 /**
  * Возвращает значение является ли данная модель телефона iPhone 6
  *
  * @return BOOL
  */
-#define isIphone6 ((screenSize.height > 568.0 && screenSize.height <= 667.0) ? YES : NO)
+#define isIphone6 ((SCREEN_WIDTH_LANDSCAPE > 568.0 && SCREEN_WIDTH_LANDSCAPE <= 667.0) ? YES : NO)
+
+/**
+ * Возвращает значение является ли данная модель телефона iPhone 5
+ *
+ * @return BOOL
+ */
+#define isIphone5 ((isIphone4 || isIphone6 || SCREEN_WIDTH_LANDSCAPE > 568.0) ? NO : YES)
 
 /**
  * Возвращает значение является ли данная модель телефона iPhone 6+
  *
  * @return BOOL
  */
-#define isIphone6Plus ((!(isIphone4 || isIphone5 || isIphone6) && screenSize.height <= 736) ? YES : NO)
+#define isIphone6Plus ((!(isIphone4 || isIphone5 || isIphone6) && SCREEN_WIDTH_LANDSCAPE <= 736) ? YES : NO)
 
 /**
  * Возвращает значение равна ли данная версия ОС v
