@@ -25,7 +25,7 @@
 #define UDIDString [[UIDevice currentDevice] identifierForVendor].UUIDString
 
 /** Возвращает корневой View Controller */
-#define rootVC ((NVSlideMenuController *)[[UIApplication sharedApplication] delegate].window.rootViewController)
+#define rootVC ((UIViewController*)[[UIApplication sharedApplication] delegate].window.rootViewController
 
 /** Возвращает userDefaults */
 #define userDefaults [NSUserDefaults standardUserDefaults]
@@ -50,6 +50,20 @@
  * @return CGSize
  */
 #define screenSize [[UIScreen mainScreen] bounds].size
+
+/**
+ * Возвращает высоту экрана в альбомной ориентации (для поддержки iOS7 и iOS8)
+ *
+ * @return CGFloat
+ */
+#define SCREEN_HEIGHT_LANSCAPE MIN(screenSize.width, screenSize.height)
+
+/**
+ * Возвращает ширину экрана в альбомной ориентации (для поддержки iOS7 и iOS8)
+ *
+ * @return CGFloat
+ */
+#define SCREEN_WIDTH_LANDSCAPE MAX(screenSize.width, screenSize.height)
 
 /**
  * Возвращает значение является ли данная модель iPad
