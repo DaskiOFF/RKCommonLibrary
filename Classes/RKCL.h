@@ -25,10 +25,16 @@
 #define UDIDString [[UIDevice currentDevice] identifierForVendor].UUIDString
 
 /** Возвращает корневой View Controller */
-#define rootVC ((UIViewController*)[[UIApplication sharedApplication] delegate].window.rootViewController
+#define rootVC ((UIViewController*)[[UIApplication sharedApplication] delegate].window.rootViewController)
 
 /** Возвращает userDefaults */
 #define userDefaults [NSUserDefaults standardUserDefaults]
+
+/** Подписаться на уведомление о событии */
+#define NotificationAdd(sel,nameNotif) [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sel) name:(nameNotif) object:nil];
+
+/** Отправить уведомление о событии */
+#define NotificationPost(name) [[NSNotificationCenter defaultCenter] postNotificationName:(name) object:nil]
 
 /**
  * Возвращает текущую локаль

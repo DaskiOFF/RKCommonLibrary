@@ -18,6 +18,8 @@ RKCL.h
 * UDIDString - Возвращает UDID устройства в виде строки
 * rootVC - Возвращает корневой View Controller
 * userDefaults - Возвращает userDefaults
+* NotificationAdd(sel,nameNotif) - Подписаться на уведомление о событии
+* NotificationPost(name) - Отправить уведомление о событии
 * currentLocale - Возвращает текущую локаль
 * isRussian - Возвращает булевское значение указывающее русская локаль или нет
 * screenSize - Возвращает структуру содержащую размеры экрана
