@@ -18,6 +18,7 @@
 	#import "UILabel+RKUILabelCategory.h"
 	#import "UINavigationController+RKUINavigationControllerCategory.h"
 	#import "UIViewController+RKUIViewControllerCategory.h"
+	#import "RKBaseClass.h"
 
 #endif /* __RKCL__ */
 
