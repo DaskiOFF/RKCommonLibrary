@@ -10,9 +10,4 @@
 
 @interface RKBaseClass : NSObject
 
-@property (nonatomic, strong) NSString* name;
-@property (nonatomic, strong) NSNumber* id;
-@property (nonatomic, assign) BOOL flag;
-@property (nonatomic, assign) NSUInteger count;
-
 @end
