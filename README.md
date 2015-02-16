@@ -56,6 +56,11 @@ RKCL Class
 * + (void)clearCookies - Быстрая очистка cookies в NSHTTPCookieStorage
 * + (CGSize)frameForText:sizeWithFont:constrainedToSize: - Возвращает размер frame для размещения текста
 
+NSObject+ISNIL
+==============
+* + (BOOL)isNilObject:(NSObject*)object - Возвращает логическое значение является ли объект object == nil
+* - (BOOL)isNil - Возвращает логическое значение является ли объект nil
+
 UIView+RKUIViewCategory.h
 ==============
 * @property stringExtra - Тэг view (свойство добавляемое в runtime)

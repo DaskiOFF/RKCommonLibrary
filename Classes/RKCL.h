@@ -11,6 +11,7 @@
 #ifndef __RKCL__
     #define __RKCL__
 
+	#import "NSObject+ISNIL.h"
 	#import "UIView+RKUIViewCategory.h"
 	#import "NSString+RKNSStringCategory.h"
 	#import "NSDate+RKNSDateCategory.h"
