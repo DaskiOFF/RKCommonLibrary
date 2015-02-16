@@ -1,6 +1,6 @@
 //
-//  NSObject+ISNIL.h
-//  BrainGame
+//  NSObject+RKNSObjectCategory.h
+//  
 //
 //  Created by Roman Kotov on 16.02.15.
 //  Copyright (c) 2015 Roman Kotov. All rights reserved.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSObject (ISNIL)
+@interface NSObject (RKNSObjectCategory)
 
 /**
  *  Возвращает логическое значение является ли объект object == nil

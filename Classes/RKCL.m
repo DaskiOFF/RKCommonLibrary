@@ -1,6 +1,6 @@
 //
 //  RKCL.m
-//  DOCommonElements
+//  
 //
 //  Created by Roman Kotov on 16.12.14.
 //  Copyright (c) 2014 Roman Kotov. All rights reserved.

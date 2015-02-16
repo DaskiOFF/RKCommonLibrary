@@ -1,6 +1,6 @@
 //
 //  RKCL.h
-//  DOCommonElements
+//  
 //
 //  Created by Roman Kotov on 28.10.14.
 //  Copyright (c) 2014 Roman Kotov. All rights reserved.
@@ -11,7 +11,8 @@
 #ifndef __RKCL__
     #define __RKCL__
 
-	#import "NSObject+ISNIL.h"
+	#import "UIImage+RKUIImageCategory.h"
+	#import "NSObject+RKNSObjectCategory.h"
 	#import "UIView+RKUIViewCategory.h"
 	#import "NSString+RKNSStringCategory.h"
 	#import "NSDate+RKNSDateCategory.h"

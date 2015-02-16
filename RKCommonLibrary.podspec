@@ -22,8 +22,14 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'NSObject' do |ss|
-    ss.source_files  = "Classes/NSObject+ISNIL.{h,m}"
-    ss.public_header_files = "Classes/NSObject+ISNIL.h"
+    ss.source_files  = "Classes/NSObject+RKNSObjectCategory.{h,m}"
+    ss.public_header_files = "Classes/NSObject+RKNSObjectCategory.h"
+    ss.framework  = "Foundation"
+  end
+
+  s.subspec 'UIImage' do |ss|
+    ss.source_files  = "Classes/UIImage+RKUIImageCategory.{h,m}"
+    ss.public_header_files = "Classes/UIImage+RKUIImageCategory.h"
     ss.framework  = "Foundation"
   end
 

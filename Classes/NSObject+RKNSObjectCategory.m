@@ -1,14 +1,14 @@
 //
-//  NSObject+ISNIL.m
-//  BrainGame
+//  NSObject+RKNSObjectCategory.m
+//  
 //
 //  Created by Roman Kotov on 16.02.15.
 //  Copyright (c) 2015 Roman Kotov. All rights reserved.
 //
 
-#import "NSObject+ISNIL.h"
+#import "NSObject+RKNSObjectCategory.h"
 
-@implementation NSObject (ISNIL)
+@implementation NSObject (RKNSObjectCategory)
 
 + (BOOL)isNilObject:(NSObject*)object {
     return [object isNil];

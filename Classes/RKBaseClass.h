@@ -1,6 +1,6 @@
 //
 //  RKBaseClass.h
-//  BrainGame
+//  
 //
 //  Created by Roman Kotov on 10.02.15.
 //  Copyright (c) 2015 Roman Kotov. All rights reserved.

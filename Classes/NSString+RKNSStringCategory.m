@@ -1,6 +1,6 @@
 //
 //  NSString+RKNSStringCategory.m
-//  tvbreak
+//  
 //
 //  Created by Roman Kotov on 16.12.14.
 //  Copyright (c) 2014 Kaerus. All rights reserved.
