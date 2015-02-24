@@ -46,4 +46,32 @@
  */
 - (NSString*)classStringForField:(NSString*)fieldName;
 
+/**
+ *  Создание объекта с данными предоставленными в NSData
+ *  которые были созданы с помощью метода serializeToData
+ *  или с помощью класса NSKeyedArchiver
+ *
+ *  @param  data    Сериализованный класс в NSData
+ *  @return экземпляр объекта с заполненными данными
+ */
++ (instancetype)initWithData:(NSData*)data;
+
+/**
+ *  Создание объекта с данными предоставленными в NSData
+ *  которые были созданы с помощью метода serializeToData
+ *  или с помощью класса NSKeyedArchiver
+ *
+ *  @param  data    Сериализованный класс в NSData
+ *  @return экземпляр объекта с заполненными данными
+ */
+- (instancetype)initWithData:(NSData*)data;
+
+/**
+ *  Сериализует объект в NSData для последующего сохранения
+ *
+ *
+ *  @return объект упакованный в NSData
+ */
+- (NSData*)serializeToData;
+
 @end
