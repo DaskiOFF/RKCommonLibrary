@@ -147,70 +147,7 @@
     [self enumerateFieldsForClass:class withActionBlock:^(NSString *atrNameProperty, NSString *atrNamePropertyKey, char *atrTypeProperty) {
         id object = [coder decodeObjectForKey:atrNamePropertyKey];
         
-        switch (atrTypeProperty[0]) {
-        case _C_CHR:
-            [self setValue:@([object charValue]) forKey:atrNameProperty];
-            break;
-        case _C_INT:
-            [self setValue:@([object intValue]) forKey:atrNameProperty];
-            break;
-        case _C_SHT:
-            [self setValue:@([object shortValue]) forKey:atrNameProperty];
-            break;
-        case _C_LNG:
-            [self setValue:@([object longValue]) forKey:atrNameProperty];
-            break;
-        case _C_LNG_LNG:
-            [self setValue:@([object longLongValue]) forKey:atrNameProperty];
-            break;
-        case _C_UCHR:
-            [self setValue:@([object unsignedCharValue]) forKey:atrNameProperty];
-            break;
-        case _C_UINT:
-            [self setValue:@([object unsignedIntValue]) forKey:atrNameProperty];
-            break;
-        case _C_USHT:
-            [self setValue:@([object unsignedShortValue]) forKey:atrNameProperty];
-            break;
-        case _C_ULNG:
-            [self setValue:@([object unsignedLongValue]) forKey:atrNameProperty];
-            break;
-        case _C_ULNG_LNG:
-            [self setValue:@([object unsignedLongLongValue]) forKey:atrNameProperty];
-            break;
-        case _C_FLT:
-            [self setValue:@([object floatValue]) forKey:atrNameProperty];
-            break;
-        case _C_DBL:
-            [self setValue:@([object doubleValue]) forKey:atrNameProperty];
-            break;
-        case _C_BOOL:
-            [self setValue:@([object boolValue]) forKey:atrNameProperty];
-            break;
-        case _C_ID:
-            [self setValue:object forKey:atrNameProperty];
-            break;
-        case _C_CLASS:
-            [self setValue:NSClassFromString([object description]) forKey:atrNameProperty];
-            break;
-        default: {
-                NSString *string = [object description];
-                if (strcmp(atrTypeProperty, @encode(CGAffineTransform)) == 0)
-                    [self setValue:[NSValue valueWithCGAffineTransform:CGAffineTransformFromString(string)] forKey:atrNameProperty];
-                else if (strcmp(atrTypeProperty, @encode(CGPoint)) == 0)
-                    [self setValue:[NSValue valueWithCGPoint:CGPointFromString(string)] forKey:atrNameProperty];
-                else if (strcmp(atrTypeProperty, @encode(CGRect)) == 0)
-                    [self setValue:[NSValue valueWithCGRect:CGRectFromString(string)] forKey:atrNameProperty];
-                else if (strcmp(atrTypeProperty, @encode(CGSize)) == 0)
-                    [self setValue:[NSValue valueWithCGSize:CGSizeFromString(string)] forKey:atrNameProperty];
-                else if (strcmp(atrTypeProperty, @encode(NSRange)) == 0)
-                    [self setValue:[NSValue valueWithRange:NSRangeFromString(string)] forKey:atrNameProperty];
-                else if (strcmp(atrTypeProperty, @encode(UIEdgeInsets)) == 0)
-                    [self setValue:[NSValue valueWithUIEdgeInsets:UIEdgeInsetsFromString(string)] forKey:atrNameProperty];
-                else if (strcmp(atrTypeProperty, @encode(UIOffset)) == 0)
-                    [self setValue:[NSValue valueWithUIOffset:UIOffsetFromString(string)] forKey:atrNameProperty];
-            }
-        }
+        [self setValue:[self getValueFromObject:object withType:atrTypeProperty] forKey:atrNameProperty];
     }];
 }
 
@@ -218,70 +155,62 @@
     [self enumerateFieldsForClass:class withActionBlock:^(NSString *atrNameProperty, NSString *atrNamePropertyKey, char *atrTypeProperty) {
         id object = [self valueForKey:atrNameProperty];
         
-        switch (atrTypeProperty[0]) {
-            case _C_CHR:
-                [coder encodeObject:@([object charValue]) forKey:atrNamePropertyKey];
-                break;
-            case _C_INT:
-                [coder encodeObject:@([object intValue]) forKey:atrNamePropertyKey];
-                break;
-            case _C_SHT:
-                [coder encodeObject:@([object shortValue]) forKey:atrNamePropertyKey];
-                break;
-            case _C_LNG:
-                [coder encodeObject:@([object longValue]) forKey:atrNamePropertyKey];
-                break;
-            case _C_LNG_LNG:
-                [coder encodeObject:@([object longLongValue]) forKey:atrNamePropertyKey];
-                break;
-            case _C_UCHR:
-                [coder encodeObject:@([object unsignedCharValue]) forKey:atrNamePropertyKey];
-                break;
-            case _C_UINT:
-                [coder encodeObject:@([object unsignedIntValue]) forKey:atrNamePropertyKey];
-                break;
-            case _C_USHT:
-                [coder encodeObject:@([object unsignedShortValue]) forKey:atrNamePropertyKey];
-                break;
-            case _C_ULNG:
-                [coder encodeObject:@([object unsignedLongValue]) forKey:atrNamePropertyKey];
-                break;
-            case _C_ULNG_LNG:
-                [coder encodeObject:@([object unsignedLongLongValue]) forKey:atrNamePropertyKey];
-                break;
-            case _C_FLT:
-                [coder encodeObject:@([object floatValue]) forKey:atrNamePropertyKey];
-                break;
-            case _C_DBL:
-                [coder encodeObject:@([object doubleValue]) forKey:atrNamePropertyKey];
-                break;
-            case _C_BOOL:
-                [coder encodeObject:@([object boolValue]) forKey:atrNamePropertyKey];
-                break;
-            case _C_ID:
-                [coder encodeObject:object forKey:atrNamePropertyKey];
-                break;
-            case _C_CLASS:
-                [coder encodeObject:NSClassFromString([object description]) forKey:atrNamePropertyKey];
-                break;
-            default: {
-                if (strcmp(atrTypeProperty, @encode(CGAffineTransform)) == 0)
-                    [coder encodeObject:NSStringFromCGAffineTransform([object CGAffineTransformValue]) forKey:atrNamePropertyKey];
-                else if (strcmp(atrTypeProperty, @encode(CGPoint)) == 0)
-                    [coder encodeObject:NSStringFromCGPoint([object CGPointValue]) forKey:atrNamePropertyKey];
-                else if (strcmp(atrTypeProperty, @encode(CGRect)) == 0)
-                    [coder encodeObject:NSStringFromCGRect([object CGRectValue]) forKey:atrNamePropertyKey];
-                else if (strcmp(atrTypeProperty, @encode(CGSize)) == 0)
-                    [coder encodeObject:NSStringFromCGSize([object CGSizeValue]) forKey:atrNamePropertyKey];
-                else if (strcmp(atrTypeProperty, @encode(NSRange)) == 0)
-                    [coder encodeObject:NSStringFromRange([object rangeValue]) forKey:atrNamePropertyKey];
-                else if (strcmp(atrTypeProperty, @encode(UIEdgeInsets)) == 0)
-                    [coder encodeObject:NSStringFromUIEdgeInsets([object UIEdgeInsetsValue]) forKey:atrNamePropertyKey];
-                else if (strcmp(atrTypeProperty, @encode(UIOffset)) == 0)
-                    [coder encodeObject:NSStringFromUIOffset([object UIOffsetValue]) forKey:atrNamePropertyKey];
-            }
-        }
+        [coder encodeObject:[self getValueFromObject:object withType:atrTypeProperty]
+                     forKey:atrNamePropertyKey];
     }];
+}
+
+- (id)getValueFromObject:(id)object withType:(char*)atrType {    
+    switch (atrType[0]) {
+        case _C_CHR:
+            return @([object charValue]);
+        case _C_INT:
+            return @([object intValue]);
+        case _C_SHT:
+            return @([object shortValue]);
+        case _C_LNG:
+            return @([object longValue]);
+        case _C_LNG_LNG:
+            return @([object longLongValue]);
+        case _C_UCHR:
+            return @([object unsignedCharValue]);
+        case _C_UINT:
+            return @([object unsignedIntValue]);
+        case _C_USHT:
+            return @([object unsignedShortValue]);
+        case _C_ULNG:
+            return @([object unsignedLongValue]);
+        case _C_ULNG_LNG:
+            return @([object unsignedLongLongValue]);
+        case _C_FLT:
+            return @([object floatValue]);
+        case _C_DBL:
+            return @([object doubleValue]);
+        case _C_BOOL:
+            return @([object boolValue]);
+        case _C_ID:
+            return object;
+        case _C_CLASS:
+            return NSClassFromString([object description]);
+        default: {
+            if (strcmp(atrType, @encode(CGAffineTransform)) == 0)
+                return NSStringFromCGAffineTransform([object CGAffineTransformValue]);
+            else if (strcmp(atrType, @encode(CGPoint)) == 0)
+                return NSStringFromCGPoint([object CGPointValue]);
+            else if (strcmp(atrType, @encode(CGRect)) == 0)
+                return NSStringFromCGRect([object CGRectValue]);
+            else if (strcmp(atrType, @encode(CGSize)) == 0)
+                return NSStringFromCGSize([object CGSizeValue]);
+            else if (strcmp(atrType, @encode(NSRange)) == 0)
+                return NSStringFromRange([object rangeValue]);
+            else if (strcmp(atrType, @encode(UIEdgeInsets)) == 0)
+                return NSStringFromUIEdgeInsets([object UIEdgeInsetsValue]);
+            else if (strcmp(atrType, @encode(UIOffset)) == 0)
+                return NSStringFromUIOffset([object UIOffsetValue]);
+        }
+    }
+    
+    return nil;
 }
 
 - (NSData*)serializeToData {
@@ -345,12 +274,13 @@
 #pragma mark Enumerate fields
 - (void)enumerateFieldsForClass:(Class)class withActionBlock:(void(^)(NSString *atrNameProperty, NSString *atrNamePropertyKey, char *atrTypeProperty))actionBlock {
     // Получаем массив свойств
-    unsigned int countProperty = 0;
-    objc_property_t *property = class_copyPropertyList(class, &countProperty);
+    unsigned int countProperty = 0; /** Количество свойств */
+    objc_property_t *property = class_copyPropertyList(class, &countProperty); /** Массив свойств */
     
     for (unsigned int i = 0; i < countProperty; i++) {
-        // Получаем атрибут имени свойства
+        // Получаем атрибут имени свойства (iVar переменной с префиксом '_')
         char *attributeNameProperty = property_copyAttributeValue(property[i], "V");
+        // Убираем префикс
         NSString *attributeNameKey = [NSString stringWithFormat:@"%s", (attributeNameProperty + 1)];
         // Получаем атрибут типа свойства
         // @see https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtPropertyIntrospection.html#//apple_ref/doc/uid/TP40008048-CH101
@@ -364,7 +294,7 @@
             }
         }
         @catch (NSException *exception) {
-            NSLog(@"Exception in enumerateFieldsForClassWithActionBlock. %@", exception.description);
+            NSLog(@"Exception in enumerateFieldsForClassWithActionBlock. (file: %s) %@", __FILE__, exception.description);
         }
         
         // Освобождаем память
