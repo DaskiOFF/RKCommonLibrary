@@ -18,7 +18,7 @@
  *  @param  alpha          Прозрачности 0..1
  *  @return UIColor по hex значению и значению прозрачности
  */
-+ (UIColor*)colorWithHex:(NSString*)hexColorString alpha:(float)alpha;
++ (UIColor*)rk_colorWithHex:(NSString*)hexColorString alpha:(float)alpha;
 
 /**
  *  Возвращает UIColor по hex значению
@@ -27,6 +27,6 @@
  *  @param  hexColorString Шестнадцатеричное представление цвета (3 или 6 элементов)
  *  @return UIColor по hex значению
  */
-+ (UIColor *)colorWithHex:(NSString*)hexColorString;
++ (UIColor *)rk_colorWithHex:(NSString*)hexColorString;
 
 @end
