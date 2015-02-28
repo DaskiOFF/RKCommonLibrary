@@ -51,5 +51,3 @@
 #import "UIViewController+RKUIViewControllerCategory.h"
 
 #endif /* __RKCommonLibrary__ */
-
-#endif
