@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RKDefines.h"
+#import "../RKDefines.h"
 
 @interface RKCL : NSObject
 
