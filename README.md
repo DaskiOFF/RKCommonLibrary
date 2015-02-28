@@ -1,7 +1,10 @@
 RKCommonLibrary
 ===============
+Common Library for iOS Project. 
+Attention, version 0.2.x brings a change of method names compared to 0.1.x!
 
-Common Library for iOS Project
+Библиотека общих методов для iOS проектов. 
+Внимание, версия 0.2.x несет в себе изменение имен методов по сравнению с 0.1.x!
 
 Contacts
 ===============
@@ -11,11 +14,13 @@ Contacts
 
 include
 ===========
-pod 'RKCommonLibrary'
+	pod 'RKCommonLibrary'
 
-RKCL.h
+	#include "RKCommonLibrary.h"
+
+RKDefines.h
 ===========
-* UDIDString - Возвращает UDID устройства в виде строки
+* UUIDString - Возвращает UDID устройства в виде строки
 * rootVC - Возвращает корневой View Controller
 * userDefaults - Возвращает userDefaults
 * NotificationAdd(sel,nameNotif) - Подписаться на уведомление о событии
@@ -52,19 +57,19 @@ RKBaseClass Class
 * + (instancetype)initWithJson: - Создание объекта с данными предоставленными в JSON. Имена !свойств! должны совпадать с ключами в JSON
 * + (NSArray*)initArrayWithJsonArray: - Создание массива объектов с данными предоставленными в JSON. Имена !свойств! должны совпадать с ключами в JSON
 * - (instancetype)initWithJson: - Создание объекта с данными предоставленными в JSON. Имена !свойств! должны совпадать с ключами в JSON
-* - (NSString*)classStringForField: - Метод возвращающий название класса, объекты которого должны быть созданны согласно данным в JSON
+* - (NSString*)rk_classStringForField: - Метод возвращающий название класса, объекты которого должны быть созданны согласно данным в JSON
 * + (instancetype)initWithData: - Создание объекта с данными предоставленными в NSData которые были созданы с помощью метода serializeToData или с помощью класса NSKeyedArchiver
 * - (instancetype)initWithData: - Создание объекта с данными предоставленными в NSData которые были созданы с помощью метода serializeToData или с помощью класса NSKeyedArchiver
-* - (NSData*)serializeToData - Сериализует объект в NSData для последующего сохранения
+* - (NSData*)rk_serializeToData - Сериализует объект в NSData для последующего сохранения
 
 RKCL Class
 ==============
-* + (void)safeWithBlock:catchBlock:finalyBlock: - Метод для безопасного выполнения кода
-* + (void)safeWithBlock:catchBlock: - Метод для безопасного выполнения кода
-* + (void)safeWithBlock: - Метод для безопасного выполнения кода
-* + (void)performBlock:delay: - Выполнение блока с указанной задержкой
-* + (void)clearCookies - Быстрая очистка cookies в NSHTTPCookieStorage
-* + (CGSize)frameForText:sizeWithFont:constrainedToSize: - Возвращает размер frame для размещения текста
+* + (void)rk_safeWithBlock:catchBlock:finalyBlock: - Метод для безопасного выполнения кода
+* + (void)rk_safeWithBlock:catchBlock: - Метод для безопасного выполнения кода
+* + (void)rk_safeWithBlock: - Метод для безопасного выполнения кода
+* + (void)rk_performBlock:delay: - Выполнение блока с указанной задержкой
+* + (void)rk_clearCookies - Быстрая очистка cookies в NSHTTPCookieStorage
+* + (CGSize)rk_frameForText:sizeWithFont:constrainedToSize: - Возвращает размер frame для размещения текста
 
 NSObject+RKNSObjectCategory.h
 ==============
@@ -77,7 +82,7 @@ UIImage+RKUIImageCategory.h
 
 UIView+RKUIViewCategory.h
 ==============
-* @property stringExtra - Тэг view (свойство добавляемое в runtime)
+* @property (nonatomic, copy) NSString *rk_stringExtra - Тэг view (свойство добавляемое в runtime)
 * @property (nonatomic, assign) CGFloat x - Координата X
 * @property (nonatomic, assign) CGFloat y - Координата Y
 * @property (nonatomic, assign) CGFloat width - Ширина
@@ -91,9 +96,9 @@ UIView+RKUIViewCategory.h
 * @property (nonatomic, assign) CGFloat left - Левый край
 * @property (nonatomic, assign) CGFloat right - Правый край
 * - (void)autoHeight - Изменение высоты view в зависимости от размеров содержащихся subview
-* - (void)shakeView - Встряска из стороны в сторону
-* - (void)printSubviewsWithIndentation: - Получаем текстовую иерархию view в NSLog
-* - (UIView *)viewWithStringExtra: - Найти subview с указанным тегом
+* - (void)rk_shakeView - Встряска из стороны в сторону
+* - (void)rk_printSubviewsWithIndentation: - Получаем текстовую иерархию view в NSLog
+* - (UIView *)rk_viewWithStringExtra: - Найти subview с указанным тегом
 
 NSString+RKNSStringCategory.h
 ==============
@@ -103,24 +108,24 @@ NSString+RKNSStringCategory.h
 
 NSDate+RKNSDateCategory.h
 ==============
-* + (NSString*)nowStringWithFormat:(NSString*)format - Текущая дата в пользовательсом формате
-* + (NSString*)nowString - Текущая дата в формате yyyy-MM-dd hh:mm:ss
-* + (NSString*)nowStringDate - Текущая дата в формате yyyy-MM-dd
-* + (NSString*)nowStringTime - Текущее время в формате hh:mm:ss
+* + (NSString*)rk_nowStringWithFormat:(NSString*)format - Текущая дата в пользовательском формате
+* + (NSString*)rk_nowString - Текущая дата в формате yyyy-MM-dd hh:mm:ss
+* + (NSString*)rk_nowStringDate - Текущая дата в формате yyyy-MM-dd
+* + (NSString*)rk_nowStringTime - Текущее время в формате hh:mm:ss
 * + (NSTimeInterval)timeIntervalSince1970 - Возвращает количество секунд с 1.1.1970
-* - (NSString*)stringWithFormat:(NSString*)format - Дата в пользовательсом формате
-* - (NSString*)string - Дата в формате yyyy-MM-dd hh:mm:ss
-* - (NSString*)stringDate - Дата в формате yyyy-MM-dd
-* - (NSString*)stringTime - Время в формате hh:mm:ss
+* - (NSString*)rk_stringWithFormat:(NSString*)format - Дата в пользовательском формате
+* - (NSString*)rk_string - Дата в формате yyyy-MM-dd hh:mm:ss
+* - (NSString*)rk_stringDate - Дата в формате yyyy-MM-dd
+* - (NSString*)rk_stringTime - Время в формате hh:mm:ss
 
 UIColor+RKUIColorCategory.h
 ==============
-* + (UIColor*)colorWithHex:alpha: - Возвращает UIColor по hex значению и значению прозрачности
-* + (UIColor *)colorWithHex: - Возвращает UIColor по hex значению
+* + (UIColor*)rk_colorWithHex:alpha: - Возвращает UIColor по hex значению и значению прозрачности
+* + (UIColor *)rk_colorWithHex: - Возвращает UIColor по hex значению
 
 UIViewController+RKUIViewControllerCategory.h
 ==============
-* - (UINavigationController*)toNavController - Создает Navigation controller и устанавливает в корневой View Controller текущий
+* - (UINavigationController*)rk_vcToNavController - Создает Navigation controller и устанавливает в корневой View Controller текущий
 
 UINavigationController+RKUINavigationControllerCategory.h
 ==============
