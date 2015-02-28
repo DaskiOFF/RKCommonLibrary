@@ -7,10 +7,11 @@
 //
 
 #import "RKCL.h"
+#import "RKDefines.h"
 
 @implementation RKCL : NSObject
 
-+ (void)safeWithBlock:(void (^)())block catchBlock:(void (^)(NSException *exception))catchBlock finalyBlock:(void (^)())finalyBlock {
++ (void)rk_safeWithBlock:(void (^)())block catchBlock:(void (^)(NSException *exception))catchBlock finalyBlock:(void (^)())finalyBlock {
     @try {
         if (block) {
             block();
@@ -30,22 +31,22 @@
     }
 }
 
-+ (void)safeWithBlock:(void (^)())block catchBlock:(void (^)(NSException *exception))catchBlock {
-    [self safeWithBlock:block catchBlock:catchBlock finalyBlock:nil];
++ (void)rk_safeWithBlock:(void (^)())block catchBlock:(void (^)(NSException *exception))catchBlock {
+    [self rk_safeWithBlock:block catchBlock:catchBlock finalyBlock:nil];
 }
 
-+ (void)safeWithBlock:(void (^)())block {
-    [self safeWithBlock:block catchBlock:nil finalyBlock:nil];
++ (void)rk_safeWithBlock:(void (^)())block {
+    [self rk_safeWithBlock:block catchBlock:nil finalyBlock:nil];
 }
 
-+ (void)performBlock:(void (^)())block delay:(NSTimeInterval)delay {
++ (void)rk_performBlock:(void (^)())block delay:(NSTimeInterval)delay {
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delay * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         block();
     });
 }
 
-+ (void)clearCookies {
++ (void)rk_clearCookies {
     NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies];
     for (NSHTTPCookie *cookie in cookies)
     {
@@ -54,7 +55,7 @@
     DOLog(@"Cookies очищены!");
 }
 
-+ (CGSize)frameForText:(NSString*)text sizeWithFont:(UIFont*)font constrainedToSize:(CGSize)size {
++ (CGSize)rk_frameForText:(NSString*)text sizeWithFont:(UIFont*)font constrainedToSize:(CGSize)size {
     NSDictionary *attributesDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                           font, NSFontAttributeName,
                                           nil];
