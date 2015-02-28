@@ -10,6 +10,7 @@
 
 @interface UINavigationController (RKUINavigationControllerCategory)
 
+/// Заголовок кнопки "назад"
 @property (nonatomic, strong) NSString* backButtonTitle;
 
 @end
