@@ -17,16 +17,16 @@
  *  @param  format  формат в котором должна быть возвращена дата
  *  @return Строка с датой в виде предоставленного формата
  */
-+ (NSString*)nowStringWithFormat:(NSString*)format;
++ (NSString*)rk_nowStringWithFormat:(NSString*)format;
 
 /** Текущая дата в формате yyyy-MM-dd hh:mm:ss */
-+ (NSString*)nowString;
++ (NSString*)rk_nowString;
 
 /** Текущая дата в формате yyyy-MM-dd */
-+ (NSString*)nowStringDate;
++ (NSString*)rk_nowStringDate;
 
 /** Текущее время в формате hh:mm:ss */
-+ (NSString*)nowStringTime;
++ (NSString*)rk_nowStringTime;
 
 /** Возвращает количество секунд с 1.1.1970 */
 + (NSTimeInterval)timeIntervalSince1970;
@@ -38,15 +38,15 @@
  *  @param  format  формат в котором должна быть возвращена дата
  *  @return Строка с датой в виде предоставленного формата
  */
-- (NSString*)stringWithFormat:(NSString*)format;
+- (NSString*)rk_stringWithFormat:(NSString*)format;
 
 /** Дата в формате yyyy-MM-dd hh:mm:ss */
-- (NSString*)string;
+- (NSString*)rk_string;
 
 /** Дата в формате yyyy-MM-dd */
-- (NSString*)stringDate;
+- (NSString*)rk_stringDate;
 
 /** Время в формате hh:mm:ss */
-- (NSString*)stringTime;
+- (NSString*)rk_stringTime;
 
 @end
