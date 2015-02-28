@@ -7,7 +7,7 @@
 //
 
 #import "RKCL.h"
-#import "RKDefines.h"
+#import <RKDefines.h>
 
 @implementation RKCL : NSObject
 
