@@ -10,44 +10,44 @@
 
 @implementation NSDate (RKNSDateCategory)
 
-+ (NSString*)nowStringWithFormat:(NSString*)format {
++ (NSString*)rk_nowStringWithFormat:(NSString*)format {
     NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateFormat:format];
     return [formatter stringFromDate:[NSDate date]];
 }
 
-+ (NSString*)nowString {
-    return [self nowStringWithFormat:@"yyyy-MM-dd hh:mm:ss"];
++ (NSString*)rk_nowString {
+    return [self rk_nowStringWithFormat:@"yyyy-MM-dd hh:mm:ss"];
 }
 
-+ (NSString*)nowStringDate {
-    return [self nowStringWithFormat:@"yyyy-MM-dd"];
++ (NSString*)rk_nowStringDate {
+    return [self rk_nowStringWithFormat:@"yyyy-MM-dd"];
 }
 
-+ (NSString*)nowStringTime {
-    return [self nowStringWithFormat:@"hh:mm:ss"];
++ (NSString*)rk_nowStringTime {
+    return [self rk_nowStringWithFormat:@"hh:mm:ss"];
 }
 
 + (NSTimeInterval)timeIntervalSince1970 {
     return [NSDate date].timeIntervalSince1970;
 }
 
-- (NSString*)stringWithFormat:(NSString*)format {
+- (NSString*)rk_stringWithFormat:(NSString*)format {
     NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateFormat:format];
     return [formatter stringFromDate:self];
 }
 
-- (NSString*)string {
-    return [self stringWithFormat:@"yyyy-MM-dd hh:mm:ss"];
+- (NSString*)rk_string {
+    return [self rk_stringWithFormat:@"yyyy-MM-dd hh:mm:ss"];
 }
 
-- (NSString*)stringDate {
-    return [self stringWithFormat:@"yyyy-MM-dd"];
+- (NSString*)rk_stringDate {
+    return [self rk_stringWithFormat:@"yyyy-MM-dd"];
 }
 
-- (NSString*)stringTime {
-    return [self stringWithFormat:@"hh:mm:ss"];
+- (NSString*)rk_stringTime {
+    return [self rk_stringWithFormat:@"hh:mm:ss"];
 }
 
 @end

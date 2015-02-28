@@ -12,22 +12,14 @@
 @implementation RKBaseClass
 
 #pragma mark -
-#pragma mark Init
-+ (instancetype)initWithJson:(NSDictionary*)json {
+#pragma mark Init with Json
++ (instancetype)initWithJson:(NSDictionary*)json
+{
     return [[[self class] alloc] initWithJson:json];
 }
 
-+ (NSArray*)initArrayWithJsonArray:(NSArray*)jsonArray {
-    NSMutableArray *resultArray = [NSMutableArray new];
-    
-    for (NSDictionary *json in jsonArray) {
-        [resultArray addObject:[[[self class] alloc] initWithJson:json]];
-    }
-    
-    return resultArray;
-}
-
-- (instancetype)initWithJson:(NSDictionary*)json {
+- (instancetype)initWithJson:(NSDictionary*)json
+{
     self = [super init];
     if (self) {
         /// Заполняем поля текущего класса
@@ -46,62 +38,28 @@
     return self;
 }
 
-- (void)getValuesForClass:(Class)class withJson:(NSDictionary*)json {
-    [self enumerateFieldsForClass:class withActionBlock:^(NSString *atrNameProperty, NSString *atrNamePropertyKey, char *atrTypeProperty) {
-        if (atrTypeProperty[0] == '@') {
-            // Тип свойства начинается с символа @ => это объект
-            if ([json[atrNamePropertyKey] isKindOfClass:[NSDictionary class]]) {
-                // Объект в json похож на вложенный json. Получаем тип данного свойства и инициализаируем его
-                NSString *className = [NSString stringWithFormat:@"%s", (atrTypeProperty + 2)];
-                className = [className substringToIndex:className.length - 1];
-                if ([className isEqualToString:@"NSDictionary"]) {
-                    [self setValue:json[atrNamePropertyKey]
-                            forKey:atrNameProperty];
-                }
-                else if ([className isEqualToString:@"NSMutableDictionary"]) {
-                    [self setValue:[json[atrNamePropertyKey] mutableCopy]
-                            forKey:atrNameProperty];
-                }
-                else {
-                    [self setValue:[[NSClassFromString(className) alloc] initWithJson:json[atrNamePropertyKey]]
-                            forKey:atrNameProperty];
-                }
-            }
-            else if ([json[atrNamePropertyKey] isKindOfClass:[NSArray class]]) {
-                // Если объект в json это массив, то запросим какой класс там должен храниться
-                NSString *className = [self classStringForField:atrNamePropertyKey];
-                if (className) {
-                    NSArray *arrayForField = nil;
-                    if ([className isEqualToString:@"NSDictionary"] || [className isEqualToString:@"NSMutableDictionary"]) {
-                        arrayForField = json[atrNamePropertyKey];
-                    }
-                    else {
-                        arrayForField = [NSClassFromString(className) initArrayWithJsonArray:json[atrNamePropertyKey]];
-                    }
-                    [self setValue:arrayForField forKey:atrNameProperty];
-                }
-            }
-            else {
-                [self setValue:[json objectForKey:atrNamePropertyKey] forKey:atrNameProperty];
-            }
-        }
-        else {
-            [self setValue:[json valueForKey:atrNamePropertyKey] forKey:atrNameProperty];
-        }
-    }];
-}
-
-- (NSString*)classStringForField:(NSString*)fieldName {
-    return @"NSDictionary";
+#pragma mark -
+#pragma mark Init array with Json
++ (NSArray*)initArrayWithJsonArray:(NSArray*)jsonArray
+{
+    NSMutableArray *resultArray = [NSMutableArray new];
+    
+    for (NSDictionary *json in jsonArray) {
+        [resultArray addObject:[[[self class] alloc] initWithJson:json]];
+    }
+    
+    return resultArray;
 }
 
 #pragma mark -
 #pragma mark Init with Data
-+ (instancetype)initWithData:(NSData *)data {
++ (instancetype)initWithData:(NSData *)data
+{
     return [[self alloc] initWithData:data];
 }
 
-- (instancetype)initWithData:(NSData *)data {
+- (instancetype)initWithData:(NSData *)data
+{
     if (!data) {
         return [super init];
     }
@@ -110,8 +68,9 @@
 }
 
 #pragma mark -
-#pragma mark Serialize
-- (instancetype)initWithCoder:(NSCoder *)coder {
+#pragma mark Init with Coder
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
     self = [super init];
     if (self) {
         /// Заполняем поля текущего класса
@@ -129,7 +88,8 @@
     return self;
 }
 
-- (void)encodeWithCoder:(NSCoder *)aCoder {
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
     /// Заполняем поля текущего класса
     [self codeValuesForClass:[self class] withCoder:aCoder];
     
@@ -143,7 +103,10 @@
     }
 }
 
-- (void)getValuesForClass:(Class)class withCoder:(NSCoder*)coder {
+#pragma mark -
+#pragma mark Serialize
+- (void)getValuesForClass:(Class)class withCoder:(NSCoder*)coder
+{
     [self enumerateFieldsForClass:class withActionBlock:^(NSString *atrNameProperty, NSString *atrNamePropertyKey, char *atrTypeProperty) {
         id object = [coder decodeObjectForKey:atrNamePropertyKey];
         
@@ -151,7 +114,8 @@
     }];
 }
 
-- (void)codeValuesForClass:(Class)class withCoder:(NSCoder*)coder {
+- (void)codeValuesForClass:(Class)class withCoder:(NSCoder*)coder
+{
     [self enumerateFieldsForClass:class withActionBlock:^(NSString *atrNameProperty, NSString *atrNamePropertyKey, char *atrTypeProperty) {
         id object = [self valueForKey:atrNameProperty];
         
@@ -160,7 +124,112 @@
     }];
 }
 
-- (id)getValueFromObject:(id)object withType:(char*)atrType {    
+- (NSData*)rk_serializeToData
+{
+    return [NSKeyedArchiver archivedDataWithRootObject:self];
+}
+
+#pragma mark -
+#pragma mark Description
+- (NSString *)description
+{
+    NSMutableString *descriptionString = [[NSMutableString alloc] initWithString:@"\n"];
+    NSString *step = @"\t";
+    
+    // Добавляем имя текущего и родительского классов
+    Class superClass = class_getSuperclass([self class]);
+    [descriptionString appendFormat:@"%s:  %s\n", object_getClassName(self), class_getName(superClass)];
+    
+    // Добавляем свойства текущего класса
+    [descriptionString appendString:[self getPropertyValuesForClass:[self class] andStep:step]];
+    
+    // Добавляем свойсва родительских классов
+    while (superClass != [NSObject class]) {
+        Class oldClass = superClass;
+        superClass = class_getSuperclass(superClass);
+        
+        [descriptionString appendFormat:@"%s:  %s\n", class_getName(oldClass), class_getName(superClass)];
+        
+        [descriptionString appendString:[self getPropertyValuesForClass:oldClass andStep:step]];
+    }
+    
+    [descriptionString appendString:@"\n"];
+    
+    return descriptionString;
+}
+
+/**
+ *  Составляем строку с описанием свойств класса
+ *
+ *
+ *  @param class    Класс, свойства которого необходимо описать
+ *  @param step     Отступ от края, для свойств
+ *  @return Строка с описанием полей
+ */
+- (NSString*)getPropertyValuesForClass:(Class)class andStep:(NSString*)step
+{
+    __block NSMutableString *propertyString = [NSMutableString new];
+    
+    [self enumerateFieldsForClass:class withActionBlock:^(NSString *atrNameProperty, NSString *atrNamePropertyKey, char *atrTypeProperty) {
+        // Получаем значение свойства
+        NSValue *value = [self valueForKey:atrNameProperty];
+        
+        // Добавляем все в описание "> имя_свойства (тип_свойства) = значение_свойства"
+        [propertyString appendFormat:@"%@ %@ (%s) = %@\n", step, atrNamePropertyKey, atrTypeProperty, value];
+    }];
+    
+    return propertyString;
+}
+
+#pragma mark -
+#pragma mark Accessory
+/**
+ *  Перечисляет все свойства класса и вызывает блок для каждого из них
+ *
+ *  @param  class       Класс, свойства которого будем перебирать
+ *  @param  actionBlock Блок, который будет вызываться для каждого из свойств
+ */
+- (void)enumerateFieldsForClass:(Class)class withActionBlock:(void(^)(NSString *atrNameProperty, NSString *atrNamePropertyKey, char *atrTypeProperty))actionBlock
+{
+    // Получаем массив свойств
+    unsigned int countProperty = 0; /** Количество свойств */
+    objc_property_t *property = class_copyPropertyList(class, &countProperty); /** Массив свойств */
+    
+    for (unsigned int i = 0; i < countProperty; i++) {
+        // Получаем атрибут имени свойства (iVar переменной с префиксом '_')
+        char *attributeNameProperty = property_copyAttributeValue(property[i], "V");
+        if (attributeNameProperty == NULL) {
+            free(attributeNameProperty);
+            continue;
+        }
+        // Убираем префикс
+        NSString *attributeNameKey = [NSString stringWithFormat:@"%s", (attributeNameProperty + 1)];
+        // Получаем атрибут типа свойства
+        // @see https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtPropertyIntrospection.html#//apple_ref/doc/uid/TP40008048-CH101
+        char *attributeTypeProperty = property_copyAttributeValue(property[i], "T");
+        
+        @try {
+            if (actionBlock) {
+                actionBlock([NSString stringWithFormat:@"%s", attributeNameProperty],
+                            attributeNameKey,
+                            attributeTypeProperty);
+            }
+        }
+        @catch (NSException *exception) {
+            NSLog(@"Exception in enumerateFieldsForClassWithActionBlock. (file: %s) %@", __FILE__, exception.description);
+        }
+        
+        // Освобождаем память
+        free(attributeNameProperty);
+        free(attributeTypeProperty);
+    }
+    
+    // Освобождаем память
+    free(property);
+}
+
+- (id)getValueFromObject:(id)object withType:(char*)atrType
+{
     switch (atrType[0]) {
         case _C_CHR:
             return @([object charValue]);
@@ -213,97 +282,62 @@
     return nil;
 }
 
-- (NSData*)serializeToData {
-    return [NSKeyedArchiver archivedDataWithRootObject:self];
-}
-
-#pragma mark -
-#pragma mark Description
-- (NSString *)description {
-    NSMutableString *descriptionString = [NSMutableString new];
-    
-    [descriptionString appendString:@"\n"];
-    NSMutableString *step = [@"\t" mutableCopy];
-    
-    // Добавляем имя текущего и родительского классов
-    Class superClass = class_getSuperclass([self class]);
-    [descriptionString appendFormat:@"%s:  %s {\n", object_getClassName(self), class_getName(superClass)];
-    
-    // Добавляем свойства текущего класса
-    [descriptionString appendString:[self getPropertyValuesForClass:[self class] andStep:step]];
-    [step appendString:@"\t"];
-    
-    // Добавляем свойсва родительских классов
-    while (superClass != [NSObject class]) {
-        Class oldClass = superClass;
-        superClass = class_getSuperclass(superClass);
-        
-        [descriptionString appendFormat:@"--%s:  %s\n", class_getName(oldClass), class_getName(superClass)];
-        
-        [descriptionString appendString:[self getPropertyValuesForClass:oldClass andStep:step]];
-        [step appendString:@"\t"];
-    }
-    
-    [descriptionString appendString:@"}\n"];
-    
-    return descriptionString;
-}
-
 /**
- *  Составляем строку с описанием свойств класса
+ *  Инициализируем свойства класса данными из Json
  *
  *
- *  @param class    Класс, свойства которого необходимо описать
- *  @return Строка с описанием полей
+ *  @param  class   Класс, свойства которого будем инициализировать
+ *  @param  json    json, из которого будем брать данные для свойств
  */
-- (NSString*)getPropertyValuesForClass:(Class)class andStep:(NSString*)step{
-    __block NSMutableString *propertyString = [NSMutableString new];
-    
+- (void)getValuesForClass:(Class)class withJson:(NSDictionary*)json
+{
     [self enumerateFieldsForClass:class withActionBlock:^(NSString *atrNameProperty, NSString *atrNamePropertyKey, char *atrTypeProperty) {
-        // Получаем значение свойства
-        NSValue *value = [self valueForKey:atrNameProperty];
-        
-        // Добавляем все в описание "> имя_свойства (тип_свойства) = значение_свойства"
-        [propertyString appendFormat:@"%@ %@ (%s) = %@\n", step, atrNameProperty, atrTypeProperty, value];
-    }];
-
-    return propertyString;
-}
-
-#pragma mark -
-#pragma mark Enumerate fields
-- (void)enumerateFieldsForClass:(Class)class withActionBlock:(void(^)(NSString *atrNameProperty, NSString *atrNamePropertyKey, char *atrTypeProperty))actionBlock {
-    // Получаем массив свойств
-    unsigned int countProperty = 0; /** Количество свойств */
-    objc_property_t *property = class_copyPropertyList(class, &countProperty); /** Массив свойств */
-    
-    for (unsigned int i = 0; i < countProperty; i++) {
-        // Получаем атрибут имени свойства (iVar переменной с префиксом '_')
-        char *attributeNameProperty = property_copyAttributeValue(property[i], "V");
-        // Убираем префикс
-        NSString *attributeNameKey = [NSString stringWithFormat:@"%s", (attributeNameProperty + 1)];
-        // Получаем атрибут типа свойства
-        // @see https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtPropertyIntrospection.html#//apple_ref/doc/uid/TP40008048-CH101
-        char *attributeTypeProperty = property_copyAttributeValue(property[i], "T");
-        
-        @try {
-            if (actionBlock) {
-                actionBlock([NSString stringWithFormat:@"%s", attributeNameProperty],
-                            attributeNameKey,
-                            attributeTypeProperty);
+        if (atrTypeProperty[0] == '@') {
+            // Тип свойства начинается с символа @ => это объект
+            if ([json[atrNamePropertyKey] isKindOfClass:[NSDictionary class]]) {
+                // Объект в json похож на вложенный json. Получаем тип данного свойства и инициализаируем его
+                NSString *className = [NSString stringWithFormat:@"%s", (atrTypeProperty + 2)];
+                className = [className substringToIndex:className.length - 1];
+                if ([className isEqualToString:@"NSDictionary"]) {
+                    [self setValue:json[atrNamePropertyKey]
+                            forKey:atrNameProperty];
+                }
+                else if ([className isEqualToString:@"NSMutableDictionary"]) {
+                    [self setValue:[json[atrNamePropertyKey] mutableCopy]
+                            forKey:atrNameProperty];
+                }
+                else {
+                    [self setValue:[[NSClassFromString(className) alloc] initWithJson:json[atrNamePropertyKey]]
+                            forKey:atrNameProperty];
+                }
+            }
+            else if ([json[atrNamePropertyKey] isKindOfClass:[NSArray class]]) {
+                // Если объект в json это массив, то запросим какой класс там должен храниться
+                NSString *className = [self rk_classStringForField:atrNamePropertyKey];
+                if (className) {
+                    NSArray *arrayForField = nil;
+                    if ([className isEqualToString:@"NSDictionary"] || [className isEqualToString:@"NSMutableDictionary"]) {
+                        arrayForField = json[atrNamePropertyKey];
+                    }
+                    else {
+                        arrayForField = [NSClassFromString(className) initArrayWithJsonArray:json[atrNamePropertyKey]];
+                    }
+                    [self setValue:arrayForField forKey:atrNameProperty];
+                }
+            }
+            else {
+                [self setValue:[json objectForKey:atrNamePropertyKey] forKey:atrNameProperty];
             }
         }
-        @catch (NSException *exception) {
-            NSLog(@"Exception in enumerateFieldsForClassWithActionBlock. (file: %s) %@", __FILE__, exception.description);
+        else {
+            [self setValue:[json valueForKey:atrNamePropertyKey] forKey:atrNameProperty];
         }
-        
-        // Освобождаем память
-        free(attributeNameProperty);
-        free(attributeTypeProperty);
-    }
-    
-    // Освобождаем память
-    free(property);
+    }];
+}
+
+- (NSString*)rk_classStringForField:(NSString*)fieldName
+{
+    return @"NSDictionary";
 }
 
 @end

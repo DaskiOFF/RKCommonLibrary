@@ -14,13 +14,13 @@
 static NSString *kStringExtraKey = @"StringTagKey";
 
 /** Получить значение в добавленном свойстве stringTag */
-- (NSString *)stringExtra {
+- (NSString *)rk_stringExtra {
     return objc_getAssociatedObject(self,
                                     (__bridge const void *)(kStringExtraKey));
 }
 
 /** Установить значение добавленному свойству stringExtra */
-- (void)setStringExtra:(NSString *)stringExtra {
+- (void)setRk_stringExtra:(NSString *)stringExtra {
     objc_setAssociatedObject(self,
                              (__bridge const void *)(kStringExtraKey),
                              stringExtra,
@@ -28,18 +28,18 @@ static NSString *kStringExtraKey = @"StringTagKey";
 }
 
 /** Получить view с указаным тегом */
-- (UIView *)viewWithStringExtra:(NSString *)tag {
-    return [self viewWithStringExtra:tag andView:self];
+- (UIView *)rk_viewWithStringExtra:(NSString *)tag {
+    return [self rk_viewWithStringExtra:tag andView:self];
 }
 
 /** Получить view с указанным тегом */
-- (UIView *)viewWithStringExtra:(NSString *)tag andView:(UIView *)view {
+- (UIView *)rk_viewWithStringExtra:(NSString *)tag andView:(UIView *)view {
     for (UIView *subview in view.subviews) {
-        if ([subview.stringExtra isEqualToString:tag]) {
+        if ([subview.rk_stringExtra isEqualToString:tag]) {
             return subview;
         }
         
-        UIView *view = [self viewWithStringExtra:tag andView:subview];
+        UIView *view = [self rk_viewWithStringExtra:tag andView:subview];
         if (view) return view;
     }
     
@@ -68,7 +68,7 @@ static NSString *kStringExtraKey = @"StringTagKey";
 }
 
 /** Встряска из стороны в сторону */
-- (void)shakeView
+- (void)rk_shakeView
 {
     CGFloat t = 2;
     CGAffineTransform translateRight  = CGAffineTransformTranslate(CGAffineTransformIdentity, t, 0.0);
@@ -89,7 +89,7 @@ static NSString *kStringExtraKey = @"StringTagKey";
 }
 
 /** Получаем текстовую иерархию view в NSLog */
-- (void)printSubviewsWithIndentation:(int)indentation
+- (void)rk_printSubviewsWithIndentation:(int)indentation
 {
     // Получаем все subviews
     NSArray *subviews = [self subviews];
@@ -115,7 +115,7 @@ static NSString *kStringExtraKey = @"StringTagKey";
         NSLog(@"%@", currentViewDescription);
         
         // Рекурсивно получаем остальное
-        [currentSubview printSubviewsWithIndentation:indentation+1];
+        [currentSubview rk_printSubviewsWithIndentation:indentation+1];
     }
 }
 

@@ -9,12 +9,18 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.platform     = :ios, "7.0"
 
-  s.source_files  = "Classes/RKCL.{h,m}"
-  s.public_header_files = "Classes/RKCL.h"
+  s.source_files  = "Classes/RKCommonLibrary.h"
+  s.public_header_files = "Classes/*.h"
 
   s.framework  = "Foundation"
   
   # ――― Subspec ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
+  s.subspec 'RKCL' do |ss|
+    ss.source_files  = "Classes/RKCL.{h,m}"
+    ss.public_header_files = "Classes/RKCL.h"
+    ss.framework  = "Foundation"
+  end
+
   s.subspec 'RKBaseClass' do |ss|
     ss.source_files  = "Classes/RKBaseClass.{h,m}"
     ss.public_header_files = "Classes/RKBaseClass.h"

@@ -10,7 +10,7 @@
 
 @implementation UIColor (RKUIColorCategory)
 
-+ (UIColor*)colorWithHex:(NSString*)hexColorString alpha:(float)alpha {
++ (UIColor*)rk_colorWithHex:(NSString*)hexColorString alpha:(float)alpha {
     // Значение по умолчанию
     UIColor *defaultColor = [UIColor blackColor];
     
@@ -54,8 +54,20 @@
                            alpha:alpha];
 }
 
-+ (UIColor *)colorWithHex:(NSString*)hexColorString {
-    return [self colorWithHex:hexColorString alpha:1];
++ (UIColor *)rk_colorWithHex:(NSString*)hexColorString {
+    NSUInteger length = hexColorString.length;
+    if (length == 9 || length == 5) {
+        if ([hexColorString hasPrefix:@"#"]) {
+            NSString *hexColor = [NSString stringWithFormat:@"#%@", [hexColorString substringFromIndex:(length == 9 ? 3 : 2)]];
+            NSString *hexAlpha = [hexColorString substringWithRange:NSMakeRange(1, (length == 9 ? 2 : 1))];
+            
+            NSScanner *scanner = [NSScanner scannerWithString:hexAlpha];
+            unsigned int alpha = 1;
+            [scanner scanHexInt:&alpha];
+            return [self rk_colorWithHex:hexColor alpha:(float)alpha / 255.0];
+        }
+    }
+    return [self rk_colorWithHex:hexColorString alpha:1];
 }
 
 @end

@@ -11,7 +11,7 @@
 @interface UIView (RKUIViewCategory)
 
 /** тэг view (свойство добавляемое в runtime) */
-@property (nonatomic, copy) NSString *stringExtra;
+@property (nonatomic, copy) NSString *rk_stringExtra;
 
 /// Координата X
 @property (nonatomic, assign) CGFloat x;
@@ -53,7 +53,7 @@
 - (void)autoHeight;
 
 /** Встряска из стороны в сторону */
-- (void)shakeView;
+- (void)rk_shakeView;
 
 /**
  *  Получаем текстовую иерархию view в NSLog
@@ -61,7 +61,7 @@
  *
  *  @param  indentation Начальный отступ (рекомендуемое значение = 0)
  */
-- (void)printSubviewsWithIndentation:(int)indentation;
+- (void)rk_printSubviewsWithIndentation:(int)indentation;
 
 /**
  *  Найти subview с указанным тегом
@@ -70,7 +70,7 @@
  *  @param  tag Тег view, которую мы ищем
  *  @return View с данным тегом
  */
-- (UIView *)viewWithStringExtra:(NSString *)tag;
+- (UIView *)rk_viewWithStringExtra:(NSString *)tag;
 
 
 

@@ -11,6 +11,6 @@
 @interface UIViewController (RKUIViewControllerCategory)
 
 /** Создает Navigation controller и устанавливает в корневой View Controller текущий */
-- (UINavigationController*)toNavController;
+- (UINavigationController*)rk_vcToNavController;
 
 @end

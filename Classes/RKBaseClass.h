@@ -38,15 +38,6 @@
 - (instancetype)initWithJson:(NSDictionary*)json;
 
 /**
- *  Метод возвращающий название класса, объекты которого
- *  должны быть созданны согласно данным в JSON
- *
- *  @param  fieldName   Имя свойства класса типа NSArray
- *  @return Название класса содержащегося в массиве или nil
- */
-- (NSString*)classStringForField:(NSString*)fieldName;
-
-/**
  *  Создание объекта с данными предоставленными в NSData
  *  которые были созданы с помощью метода serializeToData
  *  или с помощью класса NSKeyedArchiver
@@ -72,6 +63,16 @@
  *
  *  @return объект упакованный в NSData
  */
-- (NSData*)serializeToData;
+- (NSData*)rk_serializeToData;
+
+/**
+ *  Метод возвращающий название класса, объекты которого
+ *  должны быть созданны согласно данным в JSON
+ *  !Перегружая метод ОБЯЗАТЕЛЬНО вызывать его у родителя!
+ *
+ *  @param  fieldName   Имя свойства класса типа NSArray
+ *  @return Название класса содержащегося в массиве или nil
+ */
+- (NSString*)rk_classStringForField:(NSString*)fieldName;
 
 @end
