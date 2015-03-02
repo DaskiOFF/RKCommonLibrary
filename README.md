@@ -70,6 +70,7 @@ RKCL Class
 * + (void)rk_performBlock:delay: - Выполнение блока с указанной задержкой
 * + (void)rk_clearCookies - Быстрая очистка cookies в NSHTTPCookieStorage
 * + (CGSize)rk_frameForText:sizeWithFont:constrainedToSize: - Возвращает размер frame для размещения текста
+* + (NSString*)rk_endingForNumber:andEnding: - Функция возвращает окончание для множественного числа слова на основании числа и массива окончаний
 
 NSObject+RKNSObjectCategory.h
 ==============

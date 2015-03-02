@@ -81,4 +81,15 @@
  */
 + (CGSize)rk_frameForText:(NSString*)text sizeWithFont:(UIFont*)font constrainedToSize:(CGSize)size;
 
+/**
+ *  Функция возвращает окончание для множественного числа слова на основании числа и массива окончаний
+ *
+ *
+ *  @param  number  Число на основе которого нужно сформировать окончание
+ *  @param  ending  Массив слов или окончаний для чисел (1, 4, 5),
+ *         например array('яблоко', 'яблока', 'яблок')
+ *  @return Окончание для множественного числа
+ */
++ (NSString*)rk_endingForNumber:(NSInteger)number andEnding:(NSArray*)ending
+
 @end

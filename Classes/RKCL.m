@@ -66,4 +66,29 @@
     return frame.size;
 }
 
++ (NSString*)rk_endingForNumber:(NSInteger)number andEnding:(NSArray*)ending {
+    if (!ending || ending.count < 3) {
+        @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                       reason:[NSString stringWithFormat:@"endin.count must be == 3 in %@", NSStringFromSelector(_cmd)]
+                                     userInfo:nil];
+    }
+    
+    number = number % 100;
+    if (number >= 11 && number <= 19) {
+        return ending[2];
+    }
+    else {
+        switch (number % 10) {
+            case 1:
+                return ending[0];
+            case 2:
+            case 3:
+            case 4:
+                return ending[1];
+            default:
+                return ending[2];
+        }
+    }
+}
+
 @end
