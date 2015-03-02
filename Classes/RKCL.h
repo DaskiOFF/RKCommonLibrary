@@ -90,6 +90,6 @@
  *         например array('яблоко', 'яблока', 'яблок')
  *  @return Окончание для множественного числа
  */
-+ (NSString*)rk_endingForNumber:(NSInteger)number andEnding:(NSArray*)ending
++ (NSString*)rk_endingForNumber:(NSInteger)number andEnding:(NSArray*)ending;
 
 @end
