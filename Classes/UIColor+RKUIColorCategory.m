@@ -64,7 +64,7 @@
             NSScanner *scanner = [NSScanner scannerWithString:hexAlpha];
             unsigned int alpha = 1;
             [scanner scanHexInt:&alpha];
-            return [self rk_colorWithHex:hexColor alpha:(float)alpha / 255.0];
+            return [self rk_colorWithHex:hexColor alpha:(float)alpha / (length == 5 ? 15.0 : 255.0)];
         }
     }
     return [self rk_colorWithHex:hexColorString alpha:1];
