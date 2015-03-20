@@ -293,6 +293,11 @@
 {
     [self enumerateFieldsForClass:class withActionBlock:^(NSString *atrNameProperty, NSString *atrNamePropertyKey, char *atrTypeProperty) {
         if (atrTypeProperty[0] == '@') {
+            // Если такого ключа нет, пропускаем инициализацию данного поля
+            if (!json[atrNamePropertyKey] || [json[atrNamePropertyKey] isEqual:[NSNull null]]) {
+                return;
+            }
+            
             // Тип свойства начинается с символа @ => это объект
             if ([json[atrNamePropertyKey] isKindOfClass:[NSDictionary class]]) {
                 // Объект в json похож на вложенный json. Получаем тип данного свойства и инициализаируем его
@@ -330,7 +335,10 @@
             }
         }
         else {
-            [self setValue:[json valueForKey:atrNamePropertyKey] forKey:atrNameProperty];
+            // Если ключ содержится в json, инициализируем данное поле
+            if (json[atrNamePropertyKey] && ![json[atrNamePropertyKey] isEqual:[NSNull null]]) {
+                [self setValue:[json valueForKey:atrNamePropertyKey] forKey:atrNameProperty];
+            }
         }
     }];
 }
