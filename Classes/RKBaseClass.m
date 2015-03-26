@@ -103,6 +103,47 @@
     }
 }
 
+/**
+ *  Считаем, что префикс "NS" сторонний разработчик не использует
+ *
+ *  1) Создаем новый объект
+ *  2) Перебираем все его свойства и инициализируем их по следующему правилу
+ *      a) Если тип является типом apple, то по префиксу определяем какую копию делать
+ *      b) В остальных случаях делаем неизменяемую копию
+ *  3) Возвращаем инициализированный объект, который является копией текущего
+ */
+- (id)copyWithZone:(NSZone *)zone
+{
+    RKBaseClass *newObject = [[[self class] allocWithZone:zone] init];
+
+    const char *prefixMutableClass = "NSMutable";
+    
+    [self enumerateFieldsForClass:[self class] withActionBlock:^(NSString *atrNameProperty, NSString *atrNamePropertyKey, char *atrTypeProperty) {
+        id value = [self valueForKey:atrNameProperty];
+        
+        if (isAppleClassWithType(atrTypeProperty)) {
+            if (strstr(atrTypeProperty + 2, prefixMutableClass) != NULL) {
+                [newObject setValue:[value mutableCopy] forKey:atrNameProperty];
+            }
+            else {
+                [newObject setValue:[value copy] forKey:atrNameProperty];
+            }
+        }
+        else {
+            [newObject setValue:[value copy] forKey:atrNameProperty];
+        }
+    }];
+    
+    return newObject;
+}
+
+BOOL isAppleClassWithType(const char *type)
+{
+    return strlen(type) > 2 &&
+        ((type[2] == 'N' && type[3] == 'S') ||
+         type[0] == '_');
+}
+
 #pragma mark -
 #pragma mark Serialize
 - (void)getValuesForClass:(Class)class withCoder:(NSCoder*)coder

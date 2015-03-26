@@ -31,7 +31,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface RKBaseClass : NSObject
+@interface RKBaseClass : NSObject <NSCopying>
 
 /**
  *  Создание объекта с данными предоставленными в JSON
