@@ -44,6 +44,7 @@
 #import "NSObject+RKNSObjectCategory.h"
 #import "UIView+RKUIViewCategory.h"
 #import "NSString+RKNSStringCategory.h"
+#import "UITableView+RKUITableViewCategory.h"
 #import "NSDate+RKNSDateCategory.h"
 #import "UIColor+RKUIColorCategory.h"
 #import "UILabel+RKUILabelCategory.h"
