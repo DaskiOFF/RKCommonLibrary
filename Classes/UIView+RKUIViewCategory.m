@@ -237,4 +237,37 @@ static NSString *kStringExtraKey = @"StringTagKey";
     self.x = right - self.width;
 }
 
+- (void)setZeroConstraints:(BOOL)set {
+    if (set) {
+        self.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.superview addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[view]-0-|"
+                                                                               options:0
+                                                                               metrics:nil
+                                                                                 views:@{@"view":self}]];
+        [self.superview addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[view]-0-|"
+                                                                               options:0
+                                                                               metrics:nil
+                                                                                 views:@{@"view":self}]];
+        [self.superview setNeedsUpdateConstraints];
+        [self.superview updateConstraintsIfNeeded];
+    }
+    else {
+        self.translatesAutoresizingMaskIntoConstraints = YES;
+        
+        int i = 0;
+        while (i < self.superview.constraints.count) {
+            NSLayoutConstraint *constr = self.superview.constraints[i];
+            
+            if ([constr.firstItem isEqual:self] || [constr.secondItem isEqual:self]) {
+                [self.superview removeConstraint:constr];
+            }
+            else {
+                i++;
+            }
+        }
+        
+        [self.superview updateConstraintsIfNeeded];
+    }
+}
+
 @end

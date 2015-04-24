@@ -98,4 +98,12 @@
  */
 - (NSString*)rk_classStringForField:(NSString*)fieldName;
 
+/**
+ *  Метод возвращающий словарь {fieldName:jsonKey} для мапинга
+ *  !Перегружая метод НЕ НАДО вызывать его у родителя!
+ *
+ *  @return словарь {fieldName:jsonKey} или nil
+ */
+- (NSDictionary*)rk_keysForField;
+
 @end

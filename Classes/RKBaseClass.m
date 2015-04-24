@@ -333,6 +333,9 @@ BOOL isAppleClassWithType(const char *type)
 - (void)getValuesForClass:(Class)class withJson:(NSDictionary*)json
 {
     [self enumerateFieldsForClass:class withActionBlock:^(NSString *atrNameProperty, NSString *atrNamePropertyKey, char *atrTypeProperty) {
+        // Обновляем ключ JSON для мапинга
+        atrNamePropertyKey = [self rk_keyStringForField:atrNamePropertyKey];
+
         if (atrTypeProperty[0] == '@') {
             // Если такого ключа нет, пропускаем инициализацию данного поля
             if (!json[atrNamePropertyKey] || [json[atrNamePropertyKey] isEqual:[NSNull null]]) {
@@ -387,6 +390,27 @@ BOOL isAppleClassWithType(const char *type)
 - (NSString*)rk_classStringForField:(NSString*)fieldName
 {
     return @"NSDictionary";
+}
+
+- (NSDictionary *)rk_keysForField {
+    return nil;
+}
+
+/**
+ *  Получаем ключ для мапинга объекта в поле fieldName
+ *  с данными из JSON по ключу который возвращает метод
+ *
+ *  @param  fieldName имя свойства, для которого необходимо получить ключ
+ *  @return NSString ключ для JSON
+ */
+- (NSString *)rk_keyStringForField:(NSString *)fieldName {
+    NSDictionary *mappingDictionary = [self rk_keysForField];
+    
+    if (mappingDictionary && mappingDictionary[fieldName]) {
+        return mappingDictionary[fieldName];
+    }
+    
+    return fieldName;
 }
 
 @end

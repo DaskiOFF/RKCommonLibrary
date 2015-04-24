@@ -23,9 +23,11 @@ RKDefines.h
 * UUIDString - Возвращает UDID устройства в виде строки
 * rootVC - Возвращает корневой View Controller
 * userDefaults - Возвращает userDefaults
+* classToString(myClass) - Возвращает имя класса в виде строки
 * NotificationAdd(sel,nameNotif) - Подписаться на уведомление о событии
 * NotificationPost(name) - Отправить уведомление о событии
 * currentLocale - Возвращает текущую локаль
+* rk_mainBundle - [NSBundle mainBundle]
 * isRussian - Возвращает булевское значение указывающее русская локаль или нет
 * screenSize - Возвращает структуру содержащую размеры экрана
 * SCREEN_HEIGHT_LANSCAPE - Возвращает высоту экрана в альбомной ориентации (для поддержки iOS7 и iOS8)
@@ -52,7 +54,7 @@ RKBaseClass Class
 ==============
 Базовый класс, в котором перегружен метод description, который выводит информацию о свойствах класса.
 
-Реализован парсинг JSON с помощью runtime.h
+Реализован парсинг JSON с помощью runtime.h;
 
 Реализовано копирование [object copy]
 
@@ -60,6 +62,7 @@ RKBaseClass Class
 * + (NSArray*)initArrayWithJsonArray: - Создание массива объектов с данными предоставленными в JSON. Имена !свойств! должны совпадать с ключами в JSON
 * - (instancetype)initWithJson: - Создание объекта с данными предоставленными в JSON. Имена !свойств! должны совпадать с ключами в JSON
 * - (NSString*)rk_classStringForField: - Метод возвращающий название класса, объекты которого должны быть созданны согласно данным в JSON
+* - (NSDictionary*)rk_keysForField - Метод возвращающий словарь {fieldName:jsonKey} для мапинга
 * + (instancetype)initWithData: - Создание объекта с данными предоставленными в NSData которые были созданы с помощью метода serializeToData или с помощью класса NSKeyedArchiver
 * - (instancetype)initWithData: - Создание объекта с данными предоставленными в NSData которые были созданы с помощью метода serializeToData или с помощью класса NSKeyedArchiver
 * - (NSData*)rk_serializeToData - Сериализует объект в NSData для последующего сохранения
@@ -82,6 +85,12 @@ NSObject+RKNSObjectCategory.h
 UIImage+RKUIImageCategory.h
 ==============
 * + (UIImage *)imageWithColor:(UIColor *)color - создает UIImage с указанным цветом фона
+* + (void)cornerRadiusForPicture:(UIImage*)image imageView:(UIImageView*)imageView radius:(CGFloat)radius;
+* + (UIImage*)cornerRadiusForPicture:(UIImage*)image radius:(CGFloat)radius;
+
+UITableView+RKUITableViewCategory
+==============
+* - (void)rk_registerNibWithClass:(Class)class - Регистрация ячейки c Xib для класса class с использованием NSStringForClass
 
 UIView+RKUIViewCategory.h
 ==============
@@ -98,6 +107,7 @@ UIView+RKUIViewCategory.h
 * @property (nonatomic, assign) CGFloat bottom - Нижний край
 * @property (nonatomic, assign) CGFloat left - Левый край
 * @property (nonatomic, assign) CGFloat right - Правый край
+* - (void)setZeroConstraints: - Привязываем View ко всем краям superView
 * - (void)autoHeight - Изменение высоты view в зависимости от размеров содержащихся subview
 * - (void)rk_shakeView - Встряска из стороны в сторону
 * - (void)rk_printSubviewsWithIndentation: - Получаем текстовую иерархию view в NSLog

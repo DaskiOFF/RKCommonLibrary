@@ -72,6 +72,9 @@
 /// Правый край
 @property (nonatomic, assign) CGFloat right;
 
+/** Привязываем View ко всем краям superView */
+- (void)setZeroConstraints:(BOOL)set;
+
 /** Изменение высоты view в зависимости от размеров содержащихся subview */
 - (void)autoHeight;
 

@@ -34,5 +34,7 @@
 @interface UIImage (RKUIImageCategory)
 
 + (UIImage *)imageWithColor:(UIColor *)color;
++ (void)rk_cornerRadiusForPicture:(UIImage*)image imageView:(UIImageView*)imageView radius:(CGFloat)radius;
++ (UIImage*)rk_cornerRadiusForPicture:(UIImage*)image radius:(CGFloat)radius;
 
 @end

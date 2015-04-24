@@ -47,6 +47,11 @@
 #define userDefaults [NSUserDefaults standardUserDefaults]
 #endif
 
+/** Возвращает имя класса в виде строки*/
+#ifndef classToString
+#define classToString(myClass) NSStringFromClass([myClass class])
+#endif
+
 /** Подписаться на уведомление о событии */
 #ifndef NotificationAdd
 #define NotificationAdd(sel,nameNotif) [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sel) name:(nameNotif) object:nil];
@@ -55,6 +60,10 @@
 /** Отправить уведомление о событии */
 #ifndef NotificationPost
 #define NotificationPost(name) [[NSNotificationCenter defaultCenter] postNotificationName:(name) object:nil]
+#endif
+
+#ifndef rk_mainBundle
+#define rk_mainBundle [NSBundle mainBundle]
 #endif
 
 /**
