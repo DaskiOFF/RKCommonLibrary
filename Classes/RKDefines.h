@@ -57,6 +57,11 @@
 #define NotificationAdd(sel,nameNotif) [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sel) name:(nameNotif) object:nil];
 #endif
 
+/** Отписаться от уведомлений (dealloc) */
+#ifndef NotificationRemove
+#define NotificationRemove [[NSNotificationCenter defaultCenter] removeObserver:self];
+#endif
+
 /** Отправить уведомление о событии */
 #ifndef NotificationPost
 #define NotificationPost(name) [[NSNotificationCenter defaultCenter] postNotificationName:(name) object:nil]
