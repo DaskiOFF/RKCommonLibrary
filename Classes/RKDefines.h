@@ -211,33 +211,6 @@
 #define assetByScreenHeight(regular, longScreen) ((isIphone4) ? regular : longScreen)
 #endif
 
-/**
- * Получить цвет согласно RGB
- *
- * @return UIColor
- */
-#ifndef RGB
-#define RGB(r, g, b) [UIColor colorWithRed:(r/255.0) green:(g/255.0) blue:(b/255.0) alpha:1.0f]
-#endif
-
-/**
- * Получить цвет согласно RGB с заданной прозрачностью (alpha)
- *
- * @return UIColor
- */
-#ifndef RGBA
-#define RGBA(r, g, b, a) [UIColor colorWithRed:(r/255.0) green:(g/255.0) blue:(b/255.0) alpha:(a)]
-#endif
-
-/**
- * Получить прозрачный цвет
- *
- * @return UIColor
- */
-#ifndef ClearColor
-#define ClearColor [UIColor clearColor]
-#endif
-
 /** Вывести в лог, если режим отладки, иначе ничего не делать */
 #ifdef DEBUG
     #define DOLog(format, ...) NSLog(format, ## __VA_ARGS__)

@@ -31,6 +31,84 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ * Получить цвет согласно RGB
+ *
+ * @return UIColor
+ */
+#ifndef RGB
+#define RGB(r, g, b) [UIColor colorWithRed:(r/255.0) green:(g/255.0) blue:(b/255.0) alpha:1.0f]
+#endif
+
+/**
+ * Получить цвет согласно RGB с заданной прозрачностью (alpha)
+ *
+ * @return UIColor
+ */
+#ifndef RGBA
+#define RGBA(r, g, b, a) [UIColor colorWithRed:(r/255.0) green:(g/255.0) blue:(b/255.0) alpha:(a)]
+#endif
+
+/**
+ * Получить цвет согласно HEX значению представленному в виде 0xffaacc
+ *
+ * @return UIColor
+ */
+#ifndef RGBHexFromInt
+#define RGBHexFromInt(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#endif
+
+/**
+ * Получить цвет с заданной прозрачностью согласно HEX значению представленному в виде 0xffaacc
+ *
+ * @return UIColor
+ */
+#ifndef RGBHexFromIntWithAlpha
+#define RGBHexFromIntWithAlpha(rgbValue, alphaValue) ([UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:alphaValue]
+#endif
+
+/**
+ * Получить цвет согласно HEX значению представленному в виде @"FFF", @"AFFF", @"FFAAFF", @"AAFFAAFF"
+ *
+ * @return UIColor
+ */
+#ifndef RGBHexFromString
+#define RGBHexFromString(rgbValue) ([UIColor rk_colorWithHex:rgbValue])
+#endif
+
+/**
+ * Получить прозрачный цвет
+ *
+ * @return UIColor
+ */
+#ifndef ClearColor
+#define ClearColor [UIColor clearColor]
+#endif
+
+#ifndef WhiteColor
+#define WhiteColor [UIColor whiteColor]
+#endif
+
+#ifndef BlackColor
+#define BlackColor [UIColor blackColor]
+#endif
+
+#ifndef GreenColor
+#define GreenColor [UIColor greenColor]
+#endif
+
+#ifndef RedColor
+#define RedColor [UIColor redColor]
+#endif
+
+#ifndef YellowColor
+#define YellowColor [UIColor yellowColor]
+#endif
+
+#ifndef BlueColor
+#define BlueColor [UIColor blueColor]
+#endif
+
 @interface UIColor (RKUIColorCategory)
 
 /**
