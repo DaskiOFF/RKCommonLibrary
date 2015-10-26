@@ -76,8 +76,8 @@
  *
  * @return NSString
  */
-#ifndef currentLocale
-#define currentLocale [[NSLocale preferredLanguages] firstObject]
+#ifndef rk_currentLocale
+#define rk_currentLocale [[NSLocale preferredLanguages] firstObject]
 #endif
 
 /**
@@ -85,8 +85,8 @@
  *
  * @return BOOL
  */
-#ifndef isRussianLocale
-#define isRussianLocale [currentLocale isEqual:@"ru"]
+#ifndef rk_isRussianLocale
+#define rk_isRussianLocale [rk_currentLocale isEqual:@"ru"]
 #endif
 
 /**
@@ -94,8 +94,8 @@
  *
  * @return CGSize
  */
-#ifndef screenSize
-#define screenSize [[UIScreen mainScreen] bounds].size
+#ifndef rk_screenSize
+#define rk_screenSize [[UIScreen mainScreen] bounds].size
 #endif
 
 /**
