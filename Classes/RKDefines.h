@@ -104,7 +104,7 @@
  * @return CGFloat
  */
 #ifndef SCREEN_HEIGHT_LANSCAPE
-#define SCREEN_HEIGHT_LANSCAPE MIN(screenSize.width, screenSize.height)
+#define SCREEN_HEIGHT_LANSCAPE MIN(rk_screenSize.width, rk_screenSize.height)
 #endif
 
 /**
@@ -113,7 +113,7 @@
  * @return CGFloat
  */
 #ifndef SCREEN_WIDTH_LANDSCAPE
-#define SCREEN_WIDTH_LANDSCAPE MAX(screenSize.width, screenSize.height)
+#define SCREEN_WIDTH_LANDSCAPE MAX(rk_screenSize.width, rk_screenSize.height)
 #endif
 
 /**
