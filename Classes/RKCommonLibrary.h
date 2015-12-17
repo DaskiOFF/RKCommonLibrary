@@ -34,7 +34,6 @@
 
 //
 // Classes
-#import "RKBaseClass.h"
 #import "RKDefines.h"
 #import "RKCL.h"
 
